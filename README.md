@@ -1,6 +1,6 @@
 # PlanCampanha
 
-## Usage
+Usage:
 
 DataOut=FPlanCampana(Op); 
 
@@ -10,41 +10,42 @@ The cruise plan is in a file named strcat('Estaciones',Op.Cruise,'.csv') for exa
 
 It will have a line for operation, with the following format:
 
-Name of the station;longitude in decimal degrees;latitude in decimal degrees;type of operation
-for example:
-  24;-18.4963;29.1667;1
-
 Always the first line would be the departure port: 
 Santa Cruz;-16.2300;28.4800;10
 
-and the last line the arrival port: 
+Name of the station;longitude in decimal degrees;latitude in decimal degrees;type of operation
+for example:
+
+24;-18.4963;29.1667;1
+
+and the last line the arrival port:
 Santa Cruz;-16.2300;28.4800; 9
 
 ## Types of operations (fourth field in the station file) are:
 
- 10 - Departure port
-  1 - CTD station       - Compute the time in station using the depth and Op.VelocityCTD
- 11 - WP2 Zoo           - Compute the time in station using the depth and Op.TWP2
- 12 - Bongo Ictio       - Compute the time in station using the depth and Op.TBongo
- 13 - Manta microplasticos - Compute the time in station using the depth and Op.TAvani
- 14 - Box Core          -
- 15 - Gravity Core      -
- 16 - ROV station       -
-  2 - Waypoint
-  3 - Deploy lander     - Compute the time in station using the depth and Op.VelocityLander
-  4 - Recovery lander   - Compute the time in station using the depth and Op.VelocityLander
-  7 - Deploy mooring    - Compute the time in station using the depth and Op.VelocityCTD
-  8 - Recovery mooring  - Compute the time in station using the depth and Op.VelocityCTD
-  9 - Arrival port
+10 - Departure port
+ 1 - CTD station       - Compute the time in station using the depth and Op.VelocityCTD
+11 - WP2 Zoo           - Compute the time in station using the depth and Op.TWP2
+12 - Bongo Ictio       - Compute the time in station using the depth and Op.TBongo
+13 - Manta microplasticos - Compute the time in station using the depth and Op.TAvani
+14 - Box Core          -
+15 - Gravity Core      -
+16 - ROV station       -
+ 2 - Waypoint
+ 3 - Deploy lander     - Compute the time in station using the depth and Op.VelocityLander
+ 4 - Recovery lander   - Compute the time in station using the depth and Op.VelocityLander
+ 7 - Deploy mooring    - Compute the time in station using the depth and Op.VelocityCTD
+ 8 - Recovery mooring  - Compute the time in station using the depth and Op.VelocityCTD
+ 9 - Arrival port
  <0 - Waiting time in days
 
 ## Options
-%
+
 Op.Cruise='Raprocan1810';
 Op.DepartingDate=datenum(2018,10,20,23,00,00); %Fecha salida
 
-%Geographic limits
-Op.Region='CanaryIslands';
+### Geographic limits 
+Op.Region='CanaryIslands'; 
 Op.lat_min=24.25;
 Op.lat_max=29.50;
 Op.lon_min=340;
