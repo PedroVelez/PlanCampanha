@@ -23,35 +23,21 @@ Santa Cruz;-16.2300;28.4800; 9
 
 ## Types of operations (fourth field in the station file) are:
 
-10 - Departure port
-
- 1 - CTD station       - Compute the time in station using the depth and Op.VelocityCTD
-
-11 - WP2 Zoo           - Compute the time in station using the depth and Op.TWP2
-
-12 - Bongo Ictio       - Compute the time in station using the depth and Op.TBongo
-
-13 - Manta microplasticos - Compute the time in station using the depth and Op.TAvani
-
-14 - Box Core          -
-
-15 - Gravity Core      -
-
-16 - ROV station       -
-
- 2 - Waypoint
-
- 3 - Deploy lander     - Compute the time in station using the depth and Op.VelocityLander
-
- 4 - Recovery lander   - Compute the time in station using the depth and Op.VelocityLander
-
- 7 - Deploy mooring    - Compute the time in station using the depth and Op.VelocityCTD
-
- 8 - Recovery mooring  - Compute the time in station using the depth and Op.VelocityCTD
-
- 9 - Arrival port
-
- <0 - Waiting time in days
+10 - Departure port  
+ 1 - CTD station       - Compute the time in station using the depth and Op.VelocityCTD  
+11 - WP2 Zoo           - Compute the time in station using the depth and Op.TWP2  
+12 - Bongo Ictio       - Compute the time in station using the depth and Op.TBongo  
+13 - Manta microplasticos - Compute the time in station using the depth and Op.TAvani  
+14 - Box Core          -  
+15 - Gravity Core      -  
+16 - ROV station       -  
+ 2 - Waypoint  
+ 3 - Deploy lander     - Compute the time in station using the depth and Op.VelocityLander  
+ 4 - Recovery lander   - Compute the time in station using the depth and Op.VelocityLander  
+ 7 - Deploy mooring    - Compute the time in station using the depth and Op.VelocityCTD  
+ 8 - Recovery mooring  - Compute the time in station using the depth and Op.VelocityCTD  
+ 9 - Arrival port  
+ <0 - Waiting time in days  
 
 ## Options
 
