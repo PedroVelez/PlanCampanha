@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>PlanCampanhaRaprocan2508</name>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Navegacion a la primera estacion:  5.9 miles
+ Fecha llegada primera estacion:09-Aug-2025 19:00:00
+</description>
+      <name>Santa Cruz</name>
+      <Point>
+        <coordinates>-16.23,28.48,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm)   7.3 
+Date 09-Aug-2025 06:33:52 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-16.1191,28.4961,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm) 135.5 
+Date 09-Aug-2025 07:15:22 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-16.01,28.57,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 24 - EstacionCTD 
+Fecha llegada a la estacion Sat 09 Aug 2025 - 20:09
+Profundidad estacion: 4245 metros
+Tiempo en estacion:3.86 horas
+ Navegacion a la siguiente estacion:  0.5 miles</description>
+      <name>24</name>
+      <Point>
+        <coordinates>-18.4963,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 24-Pies433 - Operaciones 
+Fecha llegada a la estacion Sun 10 Aug 2025 - 00:03
+Profundidad estacion: 4227 metros
+Tiempo en estacion:8.40 horas
+ Navegacion a la siguiente estacion:  0.5 miles</description>
+      <name>24-Pies433</name>
+      <Point>
+        <coordinates>-18.4863,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station BoyaArgo - Operaciones 
+Fecha llegada a la estacion Sun 10 Aug 2025 - 08:30
+Profundidad estacion: 4245 metros
+Tiempo en estacion:0.72 horas
+ Navegacion a la siguiente estacion: 13.3 miles</description>
+      <name>BoyaArgo</name>
+      <Point>
+        <coordinates>-18.4963,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 23 - EstacionCTD 
+Fecha llegada a la estacion Sun 10 Aug 2025 - 10:30
+Profundidad estacion: 3989 metros
+Tiempo en estacion:3.72 horas
+ Navegacion a la siguiente estacion: 12.6 miles</description>
+      <name>23</name>
+      <Point>
+        <coordinates>-18.2425,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 22 - EstacionCTD 
+Fecha llegada a la estacion Sun 10 Aug 2025 - 15:24
+Profundidad estacion: 3662 metros
+Tiempo en estacion:3.53 horas
+ Navegacion a la siguiente estacion: 18.2 miles</description>
+      <name>22</name>
+      <Point>
+        <coordinates>-18.0025,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 21 - EstacionCTD 
+Fecha llegada a la estacion Sun 10 Aug 2025 - 20:41
+Profundidad estacion: 3695 metros
+Tiempo en estacion:3.55 horas
+ Navegacion a la siguiente estacion: 19.3 miles</description>
+      <name>21</name>
+      <Point>
+        <coordinates>-17.6543,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 20 - EstacionCTD 
+Fecha llegada a la estacion Mon 11 Aug 2025 - 02:04
+Profundidad estacion: 3890 metros
+Tiempo en estacion:3.66 horas
+ Navegacion a la siguiente estacion: 19.5 miles</description>
+      <name>20</name>
+      <Point>
+        <coordinates>-17.2862,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 19 - EstacionCTD 
+Fecha llegada a la estacion Mon 11 Aug 2025 - 07:35
+Profundidad estacion: 3843 metros
+Tiempo en estacion:3.63 horas
+ Navegacion a la siguiente estacion: 18.1 miles</description>
+      <name>19</name>
+      <Point>
+        <coordinates>-16.9136,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 18 - EstacionCTD 
+Fecha llegada a la estacion Mon 11 Aug 2025 - 12:57
+Profundidad estacion: 3725 metros
+Tiempo en estacion:3.57 horas
+ Navegacion a la siguiente estacion: 19.4 miles</description>
+      <name>18</name>
+      <Point>
+        <coordinates>-16.5683,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 17 - EstacionCTD 
+Fecha llegada a la estacion Mon 11 Aug 2025 - 18:22
+Profundidad estacion: 3672 metros
+Tiempo en estacion:3.54 horas
+ Navegacion a la siguiente estacion: 19.0 miles</description>
+      <name>17</name>
+      <Point>
+        <coordinates>-16.1979,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 16 - EstacionCTD 
+Fecha llegada a la estacion Mon 11 Aug 2025 - 23:43
+Profundidad estacion: 3627 metros
+Tiempo en estacion:3.51 horas
+ Navegacion a la siguiente estacion: 17.4 miles</description>
+      <name>16</name>
+      <Point>
+        <coordinates>-15.8347,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 15-Pies432 - Operaciones 
+Fecha llegada a la estacion Tue 12 Aug 2025 - 04:54
+Profundidad estacion: 3604 metros
+Tiempo en estacion:8.40 horas
+ Navegacion a la siguiente estacion:  0.1 miles</description>
+      <name>15-Pies432</name>
+      <Point>
+        <coordinates>-15.5018,29.165,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 15 - EstacionCTD 
+Fecha llegada a la estacion Tue 12 Aug 2025 - 13:18
+Profundidad estacion: 3604 metros
+Tiempo en estacion:3.50 horas
+ Navegacion a la siguiente estacion:  0.0 miles</description>
+      <name>15</name>
+      <Point>
+        <coordinates>-15.5007,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 15B - EstacionCTD 
+Fecha llegada a la estacion Tue 12 Aug 2025 - 16:48
+Profundidad estacion: 3604 metros
+Tiempo en estacion:3.50 horas
+ Navegacion a la siguiente estacion: 20.9 miles</description>
+      <name>15B</name>
+      <Point>
+        <coordinates>-15.5007,29.1667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 14 - EstacionCTD 
+Fecha llegada a la estacion Tue 12 Aug 2025 - 22:18
+Profundidad estacion: 3562 metros
+Tiempo en estacion:3.48 horas
+ Navegacion a la siguiente estacion: 20.5 miles</description>
+      <name>14</name>
+      <Point>
+        <coordinates>-15.11,29.0955,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 13 - EstacionCTD 
+Fecha llegada a la estacion Wed 13 Aug 2025 - 03:44
+Profundidad estacion: 3511 metros
+Tiempo en estacion:3.45 horas
+ Navegacion a la siguiente estacion: 19.2 miles</description>
+      <name>13</name>
+      <Point>
+        <coordinates>-14.7297,29.0166,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 12 - EstacionCTD 
+Fecha llegada a la estacion Wed 13 Aug 2025 - 09:00
+Profundidad estacion: 2935 metros
+Tiempo en estacion:3.13 horas
+ Navegacion a la siguiente estacion: 14.9 miles</description>
+      <name>12</name>
+      <Point>
+        <coordinates>-14.3757,28.9393,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 11 - EstacionCTD 
+Fecha llegada a la estacion Wed 13 Aug 2025 - 13:33
+Profundidad estacion: 2108 metros
+Tiempo en estacion:2.67 horas
+ Navegacion a la siguiente estacion:  0.0 miles</description>
+      <name>11</name>
+      <Point>
+        <coordinates>-14.102,28.8755,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 11-Pies431 - Operaciones 
+Fecha llegada a la estacion Wed 13 Aug 2025 - 16:14
+Profundidad estacion: 2108 metros
+Tiempo en estacion:8.40 horas
+ Navegacion a la siguiente estacion: 21.3 miles</description>
+      <name>11-Pies431</name>
+      <Point>
+        <coordinates>-14.102,28.8756,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 10 - EstacionCTD 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 02:39
+Profundidad estacion:  858 metros
+Tiempo en estacion:1.98 horas
+ Navegacion a la siguiente estacion:  0.0 miles</description>
+      <name>10</name>
+      <Point>
+        <coordinates>-13.7051,28.8024,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 10-Pies424 - Operaciones 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 04:38
+Profundidad estacion:  858 metros
+Tiempo en estacion:8.40 horas
+ Navegacion a la siguiente estacion: 12.7 miles</description>
+      <name>10-Pies424</name>
+      <Point>
+        <coordinates>-13.7051,28.8024,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 09 - EstacionCTD 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 14:15
+Profundidad estacion: 1291 metros
+Tiempo en estacion:2.22 horas
+ Navegacion a la siguiente estacion:  5.8 miles</description>
+      <name>09</name>
+      <Point>
+        <coordinates>-13.4667,28.7667,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 08 - EstacionCTD 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 17:01
+Profundidad estacion: 1305 metros
+Tiempo en estacion:2.22 horas
+ Navegacion a la siguiente estacion:  8.4 miles</description>
+      <name>08</name>
+      <Point>
+        <coordinates>-13.3622,28.738,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 07 - EstacionCTD 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 20:02
+Profundidad estacion: 1071 metros
+Tiempo en estacion:2.10 horas
+ Navegacion a la siguiente estacion:  6.6 miles</description>
+      <name>07</name>
+      <Point>
+        <coordinates>-13.2062,28.7088,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 07-Pies422 - Operaciones 
+Fecha llegada a la estacion Thu 14 Aug 2025 - 22:45
+Profundidad estacion:  760 metros
+Tiempo en estacion:8.40 horas
+ Navegacion a la siguiente estacion:  4.1 miles</description>
+      <name>07-Pies422</name>
+      <Point>
+        <coordinates>-13.0862,28.6789,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 07P - EstacionCTD 
+Fecha llegada a la estacion Fri 15 Aug 2025 - 07:33
+Profundidad estacion: 1015 metros
+Tiempo en estacion:2.06 horas
+ Navegacion a la siguiente estacion:  4.1 miles</description>
+      <name>07P</name>
+      <Point>
+        <coordinates>-13.1614,28.6955,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Deploy Mooring</description>
+      <name>EBC7</name>
+      <Point>
+        <coordinates>-13.0862,28.6789,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 06 - EstacionCTD 
+Fecha llegada a la estacion Fri 15 Aug 2025 - 11:50
+Profundidad estacion:  602 metros
+Tiempo en estacion:1.83 horas
+ Navegacion a la siguiente estacion:  7.1 miles</description>
+      <name>06</name>
+      <Point>
+        <coordinates>-13.0078,28.6588,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 05 - EstacionCTD 
+Fecha llegada a la estacion Fri 15 Aug 2025 - 14:20
+Profundidad estacion:  330 metros
+Tiempo en estacion:1.68 horas
+ Navegacion a la siguiente estacion: 16.8 miles</description>
+      <name>05</name>
+      <Point>
+        <coordinates>-12.8778,28.626,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 51 - EstacionCTD 
+Fecha llegada a la estacion Fri 15 Aug 2025 - 17:38
+Profundidad estacion:  887 metros
+Tiempo en estacion:1.99 horas
+ Navegacion a la siguiente estacion: 12.4 miles</description>
+      <name>51</name>
+      <Point>
+        <coordinates>-13.1592,28.493,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 50 - EstacionCTD 
+Fecha llegada a la estacion Fri 15 Aug 2025 - 20:48
+Profundidad estacion: 1138 metros
+Tiempo en estacion:2.13 horas
+ Navegacion a la siguiente estacion: 12.8 miles</description>
+      <name>50</name>
+      <Point>
+        <coordinates>-13.2998,28.3273,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 49 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 00:09
+Profundidad estacion: 1230 metros
+Tiempo en estacion:2.18 horas
+ Navegacion a la siguiente estacion: 12.1 miles</description>
+      <name>49</name>
+      <Point>
+        <coordinates>-13.4427,28.1547,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 48 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 03:29
+Profundidad estacion: 1330 metros
+Tiempo en estacion:2.24 horas
+ Navegacion a la siguiente estacion: 10.6 miles</description>
+      <name>48</name>
+      <Point>
+        <coordinates>-13.5833,27.9961,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 47 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 06:44
+Profundidad estacion: 1337 metros
+Tiempo en estacion:2.24 horas
+ Navegacion a la siguiente estacion:  9.1 miles</description>
+      <name>47</name>
+      <Point>
+        <coordinates>-13.7032,27.8555,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 46 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 09:50
+Profundidad estacion: 1449 metros
+Tiempo en estacion:2.31 horas
+ Navegacion a la siguiente estacion: 12.3 miles</description>
+      <name>46</name>
+      <Point>
+        <coordinates>-13.8,27.7308,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 45 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 13:19
+Profundidad estacion: 1718 metros
+Tiempo en estacion:2.45 horas
+ Navegacion a la siguiente estacion: 14.7 miles</description>
+      <name>45</name>
+      <Point>
+        <coordinates>-14,27.6265,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 44 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 17:10
+Profundidad estacion: 2172 metros
+Tiempo en estacion:2.71 horas
+ Navegacion a la siguiente estacion: 14.7 miles</description>
+      <name>44</name>
+      <Point>
+        <coordinates>-14.25,27.5221,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 43 - EstacionCTD 
+Fecha llegada a la estacion Sat 16 Aug 2025 - 21:17
+Profundidad estacion: 2396 metros
+Tiempo en estacion:2.83 horas
+ Navegacion a la siguiente estacion: 14.7 miles</description>
+      <name>43</name>
+      <Point>
+        <coordinates>-14.5,27.4177,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 42 - EstacionCTD 
+Fecha llegada a la estacion Sun 17 Aug 2025 - 01:31
+Profundidad estacion: 2684 metros
+Tiempo en estacion:2.99 horas
+ Navegacion a la siguiente estacion: 14.7 miles</description>
+      <name>42</name>
+      <Point>
+        <coordinates>-14.75,27.3134,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 41 - EstacionCTD 
+Fecha llegada a la estacion Sun 17 Aug 2025 - 05:55
+Profundidad estacion: 2826 metros
+Tiempo en estacion:3.07 horas
+ Navegacion a la siguiente estacion: 14.7 miles</description>
+      <name>41</name>
+      <Point>
+        <coordinates>-15,27.209,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 40 - EstacionCTD 
+Fecha llegada a la estacion Sun 17 Aug 2025 - 10:23
+Profundidad estacion: 3029 metros
+Tiempo en estacion:3.18 horas
+ Navegacion a la siguiente estacion: 14.8 miles</description>
+      <name>40</name>
+      <Point>
+        <coordinates>-15.25,27.1047,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 39 - EstacionCTD 
+Fecha llegada a la estacion Sun 17 Aug 2025 - 14:59
+Profundidad estacion: 3246 metros
+Tiempo en estacion:3.30 horas
+ Navegacion a la siguiente estacion: 17.9 miles</description>
+      <name>39</name>
+      <Point>
+        <coordinates>-15.5007,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 38 - EstacionCTD 
+Fecha llegada a la estacion Sun 17 Aug 2025 - 19:59
+Profundidad estacion: 3392 metros
+Tiempo en estacion:3.38 horas
+ Navegacion a la siguiente estacion: 19.4 miles</description>
+      <name>38</name>
+      <Point>
+        <coordinates>-15.8347,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 37 - EstacionCTD 
+Fecha llegada a la estacion Mon 18 Aug 2025 - 01:13
+Profundidad estacion: 3502 metros
+Tiempo en estacion:3.45 horas
+ Navegacion a la siguiente estacion: 19.8 miles</description>
+      <name>37</name>
+      <Point>
+        <coordinates>-16.1979,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 36 - EstacionCTD 
+Fecha llegada a la estacion Mon 18 Aug 2025 - 06:33
+Profundidad estacion: 3589 metros
+Tiempo en estacion:3.49 horas
+ Navegacion a la siguiente estacion:  0.0 miles</description>
+      <name>36</name>
+      <Point>
+        <coordinates>-16.5683,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 36B - EstacionCTD 
+Fecha llegada a la estacion Mon 18 Aug 2025 - 10:02
+Profundidad estacion: 3589 metros
+Tiempo en estacion:3.49 horas
+ Navegacion a la siguiente estacion: 18.5 miles</description>
+      <name>36B</name>
+      <Point>
+        <coordinates>-16.5683,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 35 - EstacionCTD 
+Fecha llegada a la estacion Mon 18 Aug 2025 - 15:17
+Profundidad estacion: 3638 metros
+Tiempo en estacion:3.52 horas
+ Navegacion a la siguiente estacion: 19.9 miles</description>
+      <name>35</name>
+      <Point>
+        <coordinates>-16.9136,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 34 - EstacionCTD 
+Fecha llegada a la estacion Mon 18 Aug 2025 - 20:43
+Profundidad estacion: 3681 metros
+Tiempo en estacion:3.55 horas
+ Navegacion a la siguiente estacion: 19.7 miles</description>
+      <name>34</name>
+      <Point>
+        <coordinates>-17.2862,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 33 - EstacionCTD 
+Fecha llegada a la estacion Tue 19 Aug 2025 - 02:08
+Profundidad estacion: 3704 metros
+Tiempo en estacion:3.56 horas
+ Navegacion a la siguiente estacion: 18.6 miles</description>
+      <name>33</name>
+      <Point>
+        <coordinates>-17.6543,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 32 - EstacionCTD 
+Fecha llegada a la estacion Tue 19 Aug 2025 - 07:28
+Profundidad estacion: 3748 metros
+Tiempo en estacion:3.58 horas
+ Navegacion a la siguiente estacion: 12.8 miles</description>
+      <name>32</name>
+      <Point>
+        <coordinates>-18.0025,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 31 - EstacionCTD 
+Fecha llegada a la estacion Tue 19 Aug 2025 - 12:16
+Profundidad estacion: 3778 metros
+Tiempo en estacion:3.60 horas
+ Navegacion a la siguiente estacion: 13.6 miles</description>
+      <name>31</name>
+      <Point>
+        <coordinates>-18.2425,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 30 - EstacionCTD 
+Fecha llegada a la estacion Tue 19 Aug 2025 - 17:09
+Profundidad estacion: 3796 metros
+Tiempo en estacion:3.61 horas
+ Navegacion a la siguiente estacion: 21.5 miles</description>
+      <name>30</name>
+      <Point>
+        <coordinates>-18.4963,27,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 29 - EstacionCTD 
+Fecha llegada a la estacion Tue 19 Aug 2025 - 22:49
+Profundidad estacion: 3880 metros
+Tiempo en estacion:3.66 horas
+ Navegacion a la siguiente estacion: 21.6 miles</description>
+      <name>29</name>
+      <Point>
+        <coordinates>-18.4963,27.359,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 28 - EstacionCTD 
+Fecha llegada a la estacion Wed 20 Aug 2025 - 04:32
+Profundidad estacion: 3920 metros
+Tiempo en estacion:3.68 horas
+ Navegacion a la siguiente estacion: 21.5 miles</description>
+      <name>28</name>
+      <Point>
+        <coordinates>-18.4963,27.719,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 27 - EstacionCTD 
+Fecha llegada a la estacion Wed 20 Aug 2025 - 10:15
+Profundidad estacion: 3978 metros
+Tiempo en estacion:3.71 horas
+ Navegacion a la siguiente estacion: 21.6 miles</description>
+      <name>27</name>
+      <Point>
+        <coordinates>-18.4963,28.078,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 26 - EstacionCTD 
+Fecha llegada a la estacion Wed 20 Aug 2025 - 16:01
+Profundidad estacion: 4073 metros
+Tiempo en estacion:3.76 horas
+ Navegacion a la siguiente estacion: 21.5 miles</description>
+      <name>26</name>
+      <Point>
+        <coordinates>-18.4963,28.438,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Station 25 - EstacionCTD 
+Fecha llegada a la estacion Wed 20 Aug 2025 - 21:50
+Profundidad estacion: 4095 metros
+Tiempo en estacion:3.78 horas
+ Navegacion a la siguiente estacion: 31.5 miles</description>
+      <name>25</name>
+      <Point>
+        <coordinates>-18.4963,28.797,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm)   7.7 
+Date 21-Aug-2025 04:37:11 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-17.9066,28.8892,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm)  90.5 
+Date 21-Aug-2025 05:20:57 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-17.7608,28.8892,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm)   5.0 
+Date 21-Aug-2025 13:57:57 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-16.0795,28.5726,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>Waypoint navegation to next station (nm)   5.9 
+Date 21-Aug-2025 14:26:45 
+</description>
+      <name>WP</name>
+      <Point>
+        <coordinates>-16.1191,28.4961,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>P. llegada  , 
+ LLegada el fecha21-Aug-2025 15:00:38
+</description>
+      <name>Santa Cruz</name>
+      <Point>
+        <coordinates>-16.23,28.48,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
