@@ -13,19 +13,20 @@ function DataOut=FPlanCampana(Op);
 % The tyes of operations (fourth field in the station file) are:
 %
 % 10 - Departure port
-%  1 - CTD station - Compute the time in station using the depth and Op.VelocityCTD
+%  1 - CTD station       - Compute the time in station using the depth and Op.VelocityCTD
+% 11 - WP2 Zoo
+% 12 - Bongo Ictio
+% 13 - Manta microplasticos
+% 14 - Box Core          -
+% 15 - Gravity Core      -
+% 16 - ROV station       -
 %  2 - Waypoint
-%  3 - Deploy lander - Compute the time in station using the depth and Op.VelocityLander
-%  4 - Recovery lander - Compute the time in station using the depth and Op.VelocityLander
-%  7 - Deploy mooring - Compute the time in station using the depth and Op.VelocityCTD
-%  8 - Recovery mooring - Compute the time in station using the depth and Op.VelocityCTD
+%  3 - Deploy lander     - Compute the time in station using the depth and Op.VelocityLander
+%  4 - Recovery lander   - Compute the time in station using the depth and Op.VelocityLander
+%  7 - Deploy mooring    - Compute the time in station using the depth and Op.VelocityCTD
+%  8 - Recovery mooring  - Compute the time in station using the depth and Op.VelocityCTD
 %  9 - Arrival port
-%
-% 12 - Box Core station
-% 13 - Gravity Core station
-% 14 - ROV station
-%
-% number <0 - Waiting time in days
+% <0 - Waiting time in days
 %
 %----Opuration parameters:
 %
@@ -41,19 +42,22 @@ function DataOut=FPlanCampana(Op);
 % Op.LonEConvMap=-360;      %For the case of map in 0-360 coodinates Elon 360
 % Op.Proj=1;                %1 'mercator', 2'Mollweide'
 %
-% Op.Delay=0.0/24;          %[days]
-% Op.VelocityVessel=9.5;    %[knots]
-% Op.VelocityCTD=55;        %[m/min]
-% Op.VelocityBC=55;         %[m/min]
-% Op.VelocityGC=55;         %[m/min]
-% Op.VelocityROV=40;        %[m/min]
-% Op.DepthROV=1500;         %Maximum depth of ROV[m]
-% Op.DailyAOperation=0.0;   %Daily time [h] for additional operations
-% Op.TStation=0.50;         %Time [h] for operation righ after station
-% Op.VelocityLander=30;     %[m/min]
-% Op.VelocityMooring=55;    %[m/min]
-% Op.TMooring=1.0;          %Time [h] for operation righ after recover/deploy mooring.
-% Op.TLander=1.0;           %Time [h] for operation righ after recover/deploy mooring.
+% Op.Delay=0.0/24;          % [days]
+% Op.DepthROV=1500;         % Maximum depth of ROV[m]
+% Op.DailyAOperation=0.0;   % Daily time [h] for additional operations
+% Op.TStation=0.50;         % Time [h] for operation righ after station
+% Op.TWP2=0.5;              % Time [h] for WP2 operation.
+% Op.TBongo=0.5;            % Time [h] for Bongo operation.
+% Op.TAvani=0.5;           % Time [h] for Avani operation.
+% Op.TLander=1.0;           % Time [h] for operation righ after recover/deploy mooring.
+% Op.TMooring=0.5;          % Time [h] for operation righ after recover/deploy mooring.
+% Op.VelocityVessel=9.5;    % [knots]
+% Op.VelocityCTD=55;        % [m/min]
+% Op.VelocityBC=55;         % [m/min]
+% Op.VelocityGC=55;         % [m/min]
+% Op.VelocityROV=40;        % [m/min]
+% Op.VelocityLander=30;     % [m/min]
+% Op.VelocityMooring=55;    % [m/min]
 %
 % Op.Batimetry=1;           %[1/0] to add batythemtry
 % Op.BatimetryIso=[-1000];  %Isobaths to contour
@@ -68,7 +72,9 @@ function DataOut=FPlanCampana(Op);
 % Op.StaSpecMarks1Ticks=0;  %Flag to label special stations
 % Op.Subtitle=1;            %[0/1/2] for [no/short/long] subtitle
 %
-% Op.OutputGEarth=1;
+% Op.MoorTick=1;            %A ñade nombre de fondeo
+%
+% Op.OutputKml=1;
 % Op.OutputMat=1;
 % Op.OutputGPX=1;
 % Op.OutputFigures=[4 7];
@@ -105,8 +111,12 @@ if isfield(Op,'StaSpecMarks2')==0;      Op.StaSpecMarks2=[];end
 if isfield(Op,'StaSpecMarks2Color')==0; Op.StaSpecMarks2Color='g';end
 if isfield(Op,'StaSpecMarks2Ticks')==0; Op.StaSpecMarks2Ticks=0;end
 if isfield(Op,'Subtitle')==0;           Op.Subtitle=1;end
+if isfield(Op,'TWP2')==0;               Op.TWP2=0.5;end
+if isfield(Op,'TBongo')==0;             Op.TBongo=0.5;end
+if isfield(Op,'TAvani')==0;            Op.TAvani=0.5;end
+if isfield(Op,'TStation')==0;           Op.TStation=0.5;end
 if isfield(Op,'TLander')==0;            Op.TLander=1.0;end
-if isfield(Op,'TMooring')==0;           Op.TMooring=1.0;end
+if isfield(Op,'TMooring')==0;           Op.TMooring=0.5;end
 if isfield(Op,'VelocityVessel')==0;     Op.VelocityVessel=9;end
 if isfield(Op,'VelocityCTD')==0;        Op.VelocityCTD=55;end
 if isfield(Op,'VelocityGC')==0;         Op.VelocityGC=50;end
@@ -114,12 +124,19 @@ if isfield(Op,'VelocityBC')==0;         Op.VelocityBC=50;end
 if isfield(Op,'VelocityROV')==0;        Op.VelocityROV=40;end
 if isfield(Op,'VelocityMooring')==0;    Op.VelocityMooring=55;end
 if isfield(Op,'VelocityLander')==0;     Op.VelocityLander=30;end
+
 if isfield(Op,'ZEE')==0;                Op.ZEE=0;end
 
 %%
 %% Español
 if Op.Idioma==1
     OperationID{ 1} ='EstacionCTD '  ; %  1 Station CTD
+    OperationID{11} ='Red WP2     '  ; %  11 Station CTD
+    OperationID{12} ='Red Bongo 90'  ; %  12 Station CTD
+    OperationID{13} ='Red Avani   '  ; %  13 Station CTD
+    OperationID{14} ='BC'            ; %  14 Station BC [Box Core]
+    OperationID{15} ='GC'            ; %  15 Station GC [Gravity Core]
+    OperationID{16} ='ROV'           ; %  16 Station ROV
     OperationID{ 2} ='Waypoint'      ; %  2 WP
     OperationID{ 3} ='Despl.lander'  ; %  3 Poner lander
     OperationID{ 4} ='Recup.lander'  ; %  4 Quitar lander
@@ -127,12 +144,15 @@ if Op.Idioma==1
     OperationID{ 8} ='Recup.fondeo'  ; %  8 Quitar fondeo
     OperationID{ 9} ='P. llegada  '  ; %  9 Puerto de llegada
     OperationID{10} ='P. Salida   '  ; %  0 Puerto de Salida
-    OperationID{11} ='Operaciones '  ; % <0 Parados tiempo en days
-    OperationID{12} ='BC'            ; % 12 Station BC [Box Core]
-    OperationID{13} ='GC'            ; % 13 Station GC [Gravity Core]
-    OperationID{14} ='ROV'           ; % 14 Station ROV
+    OperationID{20} ='Operaciones '  ; % <0 Parados tiempo en days
 else
     OperationID{ 1} ='Station CTD'   ; %  1 Station CTD
+    OperationID{11} ='Net WP2     '  ; %  1 Station CTD
+    OperationID{12} ='Net Bongo 90'  ; %  1 Station CTD
+    OperationID{13} ='Net Avani   '  ; %  1 Station CTD
+    OperationID{14} ='BC'            ; %  14 Station BC [Box Core]
+    OperationID{15} ='GC'            ; %  15 Station GC [Gravity Core]
+    OperationID{16} ='ROV'           ; %  16 Station ROV
     OperationID{ 2} ='Waypoint'      ; %  2 WP
     OperationID{ 3} ='DeployLander'  ; %  3 Poner lander
     OperationID{ 4} ='Recov.Lander'  ; %  4 Quitar lander
@@ -140,16 +160,13 @@ else
     OperationID{ 8} ='Reco.Mooring'  ; %  8 Quitar fondeo
     OperationID{ 9} ='Arrival port'  ; %  9 Puerto de llegada
     OperationID{10} ='Depart. port'  ; %  0 Puerto de Salida
-    OperationID{11} ='Operations'    ; % <0 Parados tiempo en days
-    OperationID{12} ='BC'            ; % 12 Station BC [Box Core]
-    OperationID{13} ='GC'            ; % 13 Station GC [Gravity Core]
-    OperationID{14} ='ROV'           ; % 14 Station ROV
+    OperationID{20} ='Operations'    ; % <0 Parados tiempo en days
 end
 
 
 %% Load regional settings
 if isfield(Op,'Region')
-    if exist('Globales.mat')== 2
+    if exist('Globales.mat','file')== 2
         load Globales
         if exist(fullfile(GlobalSU.LibPath,'Settings',strcat('DS',Op.Region)),'file') == 1
             load(fullfile(GlobalSU.LibPath,'Settings',strcat('DS',Op.Region)));
@@ -199,8 +216,8 @@ while feof(fid)==0
 end
 fclose(fid);
 
-%Find oceanographic stations (1=CTD,12=BC,13=GC,14=ROV)
-indiceEST=find(PointID==1 | PointID==12 | PointID==13| PointID==14| PointID<0);
+%Find oceanographic stations (1=CTD,11=WP2, 14=BC,15=GC,16=ROV)
+indiceEST=find(PointID==1 | PointID==11 | PointID==12 |PointID==13 |PointID==14 | PointID==15| PointID==16| PointID<0);
 
 %Find moorings/landers
 indiceMOOR=find(PointID==3 | PointID==4 | PointID==7 | PointID==8);
@@ -235,7 +252,7 @@ figure(1)
 m_proj(Op.Proj, ...
     'long',[Op.lon_min Op.lon_max],'lat',[Op.lat_min Op.lat_max]);hold on
 
-if Op.ImagenSatelite==1 %Anado iamgen de satelite si hay
+if Op.ImagenSatelite==1 %Anado imagen de satelite si hubiera
     D=AddImageSatelite(Op.ImagenSateliteType,Op.ImagenSateliteDayi,GlobalDS);
     tituloIs=sprintf('%s %s',D.instrument,D.platform);
     tituloVarIs=sprintf('%s\n(%s)',D.long_name,D.units);
@@ -336,7 +353,7 @@ end
 %% Add stations
 for ii=1:length(PointLon)
     estCTDnombre=str2double(PointName{ii});
-    if PointID(ii)==1 || PointID(ii)==12 || PointID(ii)==13 || PointID(ii)==14 || PointID(ii)<0
+    if PointID(ii)==1 || PointID(ii)==11 || PointID(ii)==12 || PointID(ii)==13 || PointID(ii)==14 || PointID(ii)==15 || PointID(ii)<0
         if any(estCTDnombre==Op.StaSpecMarks1)
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize',msests+4, ...
                 'MarkerEdgeColor',Op.StaSpecMarks1Color,'MarkerFaceColor',Op.StaSpecMarks1Color,'linestyle','none');
@@ -398,7 +415,7 @@ for ii=1:length(PointLon)
 end
 
 %% Add Label the stations
-DisTc=(Op.lat_max-Op.lat_min)/18;
+DisTc=(Op.lat_max-Op.lat_min)/22;
 if Op.StaTicks>=1
     for ii=1:length(PointID)
         estCTDnombre=str2double(PointName{ii});
@@ -417,11 +434,13 @@ if Op.StaTicks>=1
         end
     end
 end
+
 if Op.MoorTick == 1
+    DisTcM=(Op.lat_max-Op.lat_min)/15;
     for ii=1:length(PointID)
         if PointID(ii)==3 || PointID(ii)==4 || PointID(ii)==7 || PointID(ii)==8
-            m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)-0.10,deblank(PointName{ii}), ...
-                'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
+            m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+DisTcM,deblank(PointName{ii}), ...
+                'color',mec,'backgroundcolor','y','Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
 
         end
     end
@@ -453,27 +472,29 @@ end
 fid = fopen(strcat('PlanCampanha',Op.Cruise,'.txt'),'w');
 
 %Output format f
-StrFmt1= '%-15s;%-12s;%4d;%6.3f; %3d;%6.3f;%5.0f;%8s; %5.1f;%4.1f;%5.1f\n'; %CTD
-StrFmt2= '%-15s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5.1f\n';  %Waypoint
-StrFmt9= '%-15s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5s\n';    %ArrivalPort
-StrFmt10='%-15s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5.1f\n';  %DeparturePort
+StrFmt1= '%-19s;%-12s;%4d;%6.3f; %3d;%6.3f;%5.0f;%8s; %5.1f;%4.1f;%5.1f\n'; %CTD
+StrFmt2= '%-19s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5.1f\n';  %Waypoint
+StrFmt9= '%-19s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5s\n';    %ArrivalPort
+StrFmt10='%-19s;%-12s;%4d;%6.3f; %3d;%6.3f;%5s;%8s; %5s;%4.1f;%5.1f\n';  %DeparturePort
 
-%Output format format for GEarth
-StrFmtGE0= 'Navegacion a la primera estacion:%5.1f miles\n Fecha llegada primera estacion:%s\n';
-StrFmtGE1a='Station %s - %s\nFecha llegada a la estacion %s\n';
-StrFmtGE1b='Profundidad estacion:%5.0f metros\n';
-StrFmtGE1c='Tiempo en estacion:%4.2f horas\n Navegacion a la siguiente estacion:%5.1f miles';
-StrFmtGE1=[StrFmtGE1a StrFmtGE1b StrFmtGE1c];
+%Output format format for Kml
+StrFmtKml0= 'Navegacion a la primera estación:%5.1f miles\n Fecha llegada primera estación:%s\n';
+StrFmtKml1a='Station %s - %s\nFecha llegada a la estación %s\n';
+StrFmtKml1b='Profundidad estación:%5.0f metros\n';
+StrFmtKml1c='Tiempo en estación:%4.2f horas\n Navegacion a la siguiente estación:%5.1f miles';
+StrFmtKml1=[StrFmtKml1a StrFmtKml1b StrFmtKml1c];
 
 %Header output file
 if Op.Idioma==2
-    fprintf(fid,'Station        ;Operation   ;LonG;LonM  ;LatG;LatM  ;Dep-m;Arriv. date;Hour ;Whours;Day ;Naveg\n');
-    fprintf(    '------------------------------------------------------------------------------------\n');
-    fprintf(    'Station        ;Operation   ;LonG;LonM  ;LatG;LatM  ;Dep-m;Arriv. date;Hour ;Whours;Day ;Naveg\n');
+    fprintf(fid,'Station            ;Operation   ;LonG;LonM  ;LatG;LatM  ;Dep-m;Arrival date   ;Hour ;Whours;Day ;Naveg\n');
+    fprintf(    '------------------------------------------------------------------------------------------------------\n');
+    fprintf(    'Station            ;Operation   ;LonG;LonM  ;LatG;LatM  ;Dep-m;Arrival date   ;Hour ;Whours;Day ;Naveg\n');
+
 elseif Op.Idioma==1
-    fprintf(fid,'Estación       ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llega;Hora ;horasT;Dia ;Naveg\n');
-    fprintf(    '------------------------------------------------------------------------------------\n');
-    fprintf(    'Estación       ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llega;Hora ;horasT;Dia ;Naveg\n');
+    fprintf(fid,'Estación           ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llegada  ;Hora ;horasT;Dia ;Naveg\n');
+    fprintf(    '------------------------------------------------------------------------------------------------------\n');
+    fprintf(    'Estación           ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llegada  ;Hora ;horasT;Dia ;Naveg\n');
+
 end
 
 
@@ -482,21 +503,20 @@ ii=1;
 TimeAtPoint(ii)=0;
 DateAfterPoint(ii)=Op.DepartingDate;
 DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-fprintf(fid,StrFmt10,PointName{ii},OperationID{10},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),'-----', ...
-    datestr(DateAfterPoint(ii),'dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),DistanciaPP(ii));
-fprintf(    StrFmt10,PointName{ii},OperationID{10},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),'-----', ...
-    datestr(DateAfterPoint(ii),'dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),DistanciaPP(ii));
 
-GEnombrePunto{ii} =PointName{ii};
-GEDescripcionPunto{ii} =sprintf(StrFmtGE0,DistanciaPP(ii),datestr(Op.DepartingDate,0));
+fprintf(fid,StrFmt10,PointName{ii},OperationID{10},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),'-----', ...
+    datestr(DateAfterPoint(ii),'ddd dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),DistanciaPP(ii));
+fprintf(    StrFmt10,PointName{ii},OperationID{10},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),'-----', ...
+    datestr(DateAfterPoint(ii),'ddd dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),DistanciaPP(ii));
+
+KmlNombrePunto{ii} =PointName{ii};
+KmlDescripcionPunto{ii} =sprintf(StrFmtKml0,DistanciaPP(ii),datestr(Op.DepartingDate,0));
 
 %Stations (CTD,BC,GC,ROV,Operations) and arrival port
-pn=0;
 diaOperacionDiaria=Op.DepartingDate;
 StationNumber=0;
 
 for ii=2:length(PointLon)
-
     %CTD code 1
     if PointID(ii)==1
         StationNumber=StationNumber+1;
@@ -507,17 +527,17 @@ for ii=2:length(PointLon)
             end
         end
 
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
         TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityCTD)/3600)+Op.TStation; %En horas
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} =sprintf(StrFmtGE1,PointName{ii},OperationID{1},...
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{1},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
-            'dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
-        GEnombrePunto{ii} =PointName{ii};
+            'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -534,131 +554,25 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{1},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(StrOut);
 
-    elseif PointID(ii)==12 %BoxCore
+        %WP2 code 11
+    elseif PointID(ii)==11
         StationNumber=StationNumber+1;
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
-        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityBC)/3600)+Op.TStation;
-        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
+        TimeAtPoint(ii)=Op.TWP2;
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} =sprintf(StrFmtGE1,PointName{ii},OperationID{12},...
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{11},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
-            'dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
-        GEnombrePunto{ii} =PointName{ii};
-
-        % Add Daily time for operations
-        if Op.DailyAOperation>0
-            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
-            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
-                diaOperacionDiaria=ceil(DateAfterPoint(ii));
-                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
-                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
-                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
-                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-            end
-        end
-
-        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{12},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'),...
-            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
-        fprintf(fid,StrOut);
-        fprintf(StrOut);
-
-        %GravityCore
-    elseif PointID(ii)==13
-        StationNumber=StationNumber+1;
-        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityGC)/3600)+Op.TStation;
-        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
-        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-
-        GEDescripcionPunto{ii} =sprintf(StrFmtGE1,PointName{ii},OperationID{13},...
-            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy - HH:MM'),PointDepth(ii),...
-            TimeAtPoint(ii),DistanciaPP(ii));
-        GEnombrePunto{ii} =PointName{ii};
-
-        % Add Daily time for operations
-        if Op.DailyAOperation>0
-            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
-            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
-                diaOperacionDiaria=ceil(DateAfterPoint(ii));
-                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
-                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
-                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
-                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-            end
-        end
-
-        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{13},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'),...
-            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
-        fprintf(fid,StrOut);
-        fprintf(    StrOut);
-
-        %ROV
-    elseif PointID(ii)==14
-        StationNumber=StationNumber+1;
-        if PointDepth(ii)>Op.DepthROV
-            PointDepth(ii)=Op.DepthROV;
-        end
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
-        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityROV)/3600)+Op.TStation;
-        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
-        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-
-        GEDescripcionPunto{ii} =sprintf(StrFmtGE1,PointName{ii},OperationID{14},...
-            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy - HH:MM'),...
-            PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
-        GEnombrePunto{ii}=PointName{ii};
-
-        % Add Daily time for operations
-        if Op.DailyAOperation>0
-            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
-            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
-                diaOperacionDiaria=ceil(DateAfterPoint(ii));
-                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
-                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
-                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
-                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-            end
-        end
-
-        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{14},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'),...
-            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
-        fprintf(fid,StrOut);
-        fprintf(    StrOut);
-
-
-        %11 Operations by time
-    elseif (PointID(ii)<0)
-        StationNumber=StationNumber+1;
-        TimeAtPoint(ii)=-PointID(ii)*24; %Tiempo es estacion para cosas varias.
-        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
-        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
-
-        GEDescripcionPunto{ii} =sprintf(StrFmtGE1,PointName{ii},OperationID{11}, ...
-            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy - HH:MM'), ...
-            PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
-        GEnombrePunto{ii} =PointName{ii};
+            'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -675,7 +589,219 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{11},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(StrOut);
+
+        %Bongo code 12
+    elseif PointID(ii)==12
+        StationNumber=StationNumber+1;
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
+        TimeAtPoint(ii)=Op.TBongo;
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{12},...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
+            'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{12},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(StrOut);
+
+
+        %Red Avani
+    elseif PointID(ii)==13
+        StationNumber=StationNumber+1;
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
+        TimeAtPoint(ii)=Op.TAvani;
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{13},...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
+            'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{13},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(StrOut);
+
+    elseif PointID(ii)==14 %BoxCore
+        StationNumber=StationNumber+1;
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
+        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityBC)/3600);
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{14},...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
+            'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{12},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'),...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(StrOut);
+
+        %GravityCore
+    elseif PointID(ii)==15
+        StationNumber=StationNumber+1;
+        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityGC)/3600);
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{15},...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),...
+            TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{15},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'),...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(    StrOut);
+
+        %ROV
+    elseif PointID(ii)==16
+        StationNumber=StationNumber+1;
+        if PointDepth(ii)>Op.DepthROV
+            PointDepth(ii)=Op.DepthROV;
+        end
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
+        TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityROV)/3600);
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{16},...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'),...
+            PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii}=PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{16},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'),...
+            TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
+        fprintf(fid,StrOut);
+        fprintf(    StrOut);
+
+
+        %Operations by time
+    elseif (PointID(ii)<0)
+        StationNumber=StationNumber+1;
+        TimeAtPoint(ii)=-PointID(ii)*24; %Tiempo es estación para cosas varias.
+        TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
+        DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+        FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{11}, ...
+            datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'), ...
+            PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
+        KmlNombrePunto{ii} =PointName{ii};
+
+        % Add Daily time for operations
+        if Op.DailyAOperation>0
+            [y,mo,d,~,~,~] = datevec(DateAfterPoint(ii));
+            if ceil(DateAfterPoint(ii))~=diaOperacionDiaria %Hemos cambiado de dia
+                diaOperacionDiaria=ceil(DateAfterPoint(ii));
+                fprintf('               ;Daily Op.   ;    ;      ;    ;      ;     ;%s\n',datestr(datenum(y,mo,d),1))
+                TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
+                TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
+                DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
+                FechaTrasStation(StationNumber)=DateAfterPoint(ii);
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+            end
+        end
+
+        StrOut=sprintf(StrFmt1,PointName{ii},OperationID{20},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
@@ -687,9 +813,9 @@ for ii=2:length(PointLon)
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} =sprintf('Waypoint navegation to next station (nm) %5.1f \nDate %s \n', ...
+        KmlDescripcionPunto{ii} =sprintf('Waypoint navegation to next station (nm) %5.1f \nDate %s \n', ...
             DistanciaPP(ii),datestr(DateAfterPoint(ii),0));
-        GEnombrePunto{ii} =PointName{ii};
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -705,22 +831,22 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt2,PointName{ii},OperationID{2},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            '-----',datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'),'-----', ...
+            '-----',datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'),'-----', ...
             DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
 
         %Deploy lander (3)
     elseif (PointID(ii)==3)
-        %Subida y bajada a  m/s, mas tiempo por estacion para cosas varias.
+        %Subida y bajada a  m/s, mas tiempo por estación para cosas varias.
         TimeAtPoint(ii)=(2*PointDepth(ii)*(60/Op.VelocityLander)/3600)+Op.TLander;
         TimeAtPoint(ii)=2*(2*PointDepth(ii)/3600)+Op.TLander; %El lander sube y baja a 30m/min,
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} ='DLander';
-        GEnombrePunto{ii} =PointName{ii};
+        KmlDescripcionPunto{ii} ='DLander';
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -737,21 +863,21 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{3},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
 
         % Recover lander (4)
     elseif PointID(ii)==4
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
         TimeAtPoint(ii)=2*(2*PointDepth(ii)/3600)+Op.TLander; %El lander sube y baja a 30m/min,
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} ='RLander';
-        GEnombrePunto{ii} =PointName{ii};
+        KmlDescripcionPunto{ii} ='RLander';
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -768,21 +894,21 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{4},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
 
         % Deploy Mooring (7)
     elseif (PointID(ii)==7)
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
         TimeAtPoint(ii)=(2*PointDepth(ii)/3600)+Op.TMooring;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} ='Deploy Mooring';
-        GEnombrePunto{ii} =PointName{ii};
+        KmlDescripcionPunto{ii} ='Deploy Mooring';
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -799,21 +925,21 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{7},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
 
         %Recover Mooring (8)
     elseif (PointID(ii)==8)
-        %Subida y bajada a 1 m/s, mas tiempo por estacion para cosas varias.
+        %Subida y bajada a 1 m/s, mas tiempo por estación para cosas varias.
         TimeAtPoint(ii)=(2*PointDepth(ii)/3600)+Op.TMooring;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} ='Recover mooring';
-        GEnombrePunto{ii} =PointName{ii};
+        KmlDescripcionPunto{ii} ='Recover mooring';
+        KmlNombrePunto{ii} =PointName{ii};
 
         % Add Daily time for operations
         if Op.DailyAOperation>0
@@ -830,7 +956,7 @@ for ii=2:length(PointLon)
         end
 
         StrOut=sprintf(StrFmt1,PointName{ii},OperationID{8},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'dd mmm yyyy;HH:MM'), ...
+            PointDepth(ii),datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy;HH:MM'), ...
             TimeAtPoint(ii),DiaCampana(ii),DistanciaPP(ii));
         fprintf(fid,StrOut);
         fprintf(    StrOut);
@@ -842,12 +968,12 @@ for ii=2:length(PointLon)
         DateAfterPoint(ii)=Op.DepartingDate+TimeAfterPoint(ii)+Op.Delay;
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        GEDescripcionPunto{ii} =sprintf('%s, \n LLegada el fecha%s\n', ...
+        KmlDescripcionPunto{ii} =sprintf('%s, \n LLegada el fecha%s\n', ...
             OperationID{9},datestr(DateAfterPoint(ii),0));
-        GEnombrePunto{ii} =PointName{ii};
+        KmlNombrePunto{ii} =PointName{ii};
 
         StrOut=sprintf(StrFmt9,PointName{ii},OperationID{9},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii), ...
-            '-----',datestr(DateAfterPoint(ii),'dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),'-----');
+            '-----',datestr(DateAfterPoint(ii),'ddd dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),'-----');
         fprintf(fid,StrOut);
         fprintf(    StrOut);
     end
@@ -963,66 +1089,142 @@ if Op.Legend==1
 end
 Dataout.hpLegend=hpLegend;
 
-%% Summary
-fprintf(fid,'----------------------------------------------------------------------------------------------\n\n');
-fprintf(    '----------------------------------------------------------------------------------------------\n\n');
 
-fprintf('     > %s: %s [%s] - %s [%s] \n     > %d stations, %d moorings, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0),length(indiceEST), length(indiceMOOR),...
-    TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
-fprintf(fid,  '%s: %s [%s] - %s [%s], %d stations, %d moorings, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0),length(indiceEST), length(indiceMOOR),...
-    TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+%% Summary
+
+fprintf(fid,'\n------------------------------------------------------------------------------------------------------\n');
+fprintf(    '\n------------------------------------------------------------------------------------------------------\n');
+
+if Op.Idioma==1
+    fprintf('RESUMEN ----------------------------------------------------------------------------------------------\n\n');
+    fprintf('%s: %s [%s] - %s [%s], %4d estaciones, %5.1f millas, %5.2f dias a %3.1f nudos\n\n', ...
+    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+    fprintf(fid,'RESUMEN ----------------------------------------------------------------------------------------------\n\n');
+    fprintf(fid,'%s: %s [%s] - %s [%s], %4d estaciones, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
+    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+
+elseif Op.Idioma==2
+    fprintf('SUMMARY ----------------------------------------------------------------------------------------------\n\n');
+    fprintf('%s: %s [%s] - %s [%s], %4d stations, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
+    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+   fprintf(fid,'SUMMARY ----------------------------------------------------------------------------------------------\n\n');
+fprintf(fid,'%s: %s [%s] - %s [%s], %4d stations, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
+    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+end
+
+for i1=[1,11,12,13,14,15,3,4,5,6,7,8]
+    if ~isempty(find(PointID==i1, 1))
+        fprintf('%s: %3d [', OperationID{ i1}, length(find(PointID==i1)));
+        fprintf(fid  ,'%s: %3d [', OperationID{ i1}, length(find(PointID==i1)));
+        estaciones=find(PointID==i1);
+        for i2=1: length(estaciones)
+            if i2==length(estaciones)
+                fprintf('%s]\n\n',PointName{estaciones(i2)});
+                fprintf(fid,'%s] \n\n',PointName{estaciones(i2)});
+            else
+                fprintf('%s, ',PointName{estaciones(i2)});
+                fprintf(fid,'%s, ',PointName{estaciones(i2)});
+            end
+        end
+    end
+end
+if ~isempty(find(PointID<0, 1))
+fprintf('%s: %3d [', OperationID{20}, length(find(PointID<0)));
+ fprintf(fid  ,'%s: %3d [', OperationID{20}, length(find(PointID<0)));
+       estaciones=find(PointID<0);
+        for i2=1: length(estaciones)
+            if i2==length(estaciones)
+                fprintf('%s]\n\n',PointName{estaciones(i2)});
+                fprintf(fid,'%s] \n\n',PointName{estaciones(i2)});
+            else
+                fprintf('%s, ',PointName{estaciones(i2)});
+                fprintf(fid,'%s, ',PointName{estaciones(i2)});
+            end
+        end
+end
 
 if Op.Delay>0
-    fprintf('     > Time delay used for adjustment: %4.2f \n\n', Op.Delay);
+    fprintf('Time delay used for adjustment: %4.2f \n\n', Op.Delay);
     fprintf(fid,  'Time delay used for adjustment: %4.2f \n\n', Op.Delay);
 elseif Op.Delay<0
-    fprintf('     > WARNING Time delay used for adjustment: %4.2f \n\n', Op.Delay);
+    fprintf('WARNING Time delay used for adjustment: %4.2f \n\n', Op.Delay);
     fprintf(fid,  'WARNING Time delay used for adjustment: %4.2f \n\n', Op.Delay);
 end
 
-fprintf(fid,   ' Time in each stations has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min. ', ...
-    Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
-fprintf('     > Time in each stations has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min.\n', ...
-    Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
+if Op.Idioma==1
+    fprintf(fid,  'El tiempo en cada estación se ha estimado usando la profundidad y una velocidad de descenso/ascenso de %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min. ', ...
+        Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
+    fprintf('El tiempo en cada estación se ha estimado usando la profundidad y una velocidad de descenso/ascenso de %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min.\n', ...
+        Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
+elseif Op.Idioma==2
+    fprintf(fid,   'Time in each stations has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min. ', ...
+        Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
+    fprintf('Time in each stations has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d/%2d/%2d (CTD/BC/GC/ROV) m/min.\n', ...
+        Op.VelocityCTD,Op.VelocityBC,Op.VelocityGC,Op.VelocityROV);
+end
 
-fprintf(fid,  ' In each (CTD/BC/GC/ROV) station %3.2f h has been added for positioning. ',Op.TStation);
-fprintf(      '     > In each (CTD/BC/GC/ROV) station %3.2f h has been added for positioning.\n',Op.TStation);
+if Op.Idioma==1
+    fprintf(fid,  'En cada estación CTD se han añadido %3.2f h para posicionamiento.\n',Op.TStation);
+    fprintf(      'En cada estación CTD se han añadido %3.2f h para posicionamiento.\n',Op.TStation);
+elseif Op.Idioma==2
+    fprintf(fid,  'In each CTD station %3.2f h has been added for positioning.\n',Op.TStation);
+    fprintf(      'In each CTD station %3.2f h has been added for positioning.\n',Op.TStation);
+end
+
 
 if ~isempty(indiceMOOR)
-    fprintf(fid,   ' For the moorings/landers the time has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d m/min and additional %2d/%2d hours. \n\n', ...
-        Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
-    fprintf('     > For the moorings/landers the time has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d m/min and additional %2d/%2d hours. \n\n', ...
-        Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
+    if Op.Idioma==1
+        fprintf(fid,   'Para los fondeos/landers el tiempo se ha estimado usando la profundidad, con una velocidad de largado de  %2d/%2d m/min, y %3.2f/%3.2f h adicionales. \n\n', ...
+            Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
+        fprintf('Para los fondeos/landers el tiempo se ha estimado usando la profundidad, con una velocidad de largado de  %2d/%2d m/min, y %3.2f/%3.2f h adicionales. \n\n', ...
+            Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
+    elseif Op.Idioma==2
+        fprintf(fid,   'For the moorings/landers the time has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d m/min and additional %3.2f/%3.2f hours. \n\n', ...
+            Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
+        fprintf('For the moorings/landers the time has been estimated using the actual depth and a descend/ascend velocity of %2d/%2d m/min and additional %3.2f/%3.2f hours. \n\n', ...
+            Op.VelocityMooring,Op.VelocityLander,Op.TMooring,Op.TLander);
+    end
+
 end
 
 if Op.MaxProfCTD>0
     fprintf(fid,  ' Maximum depth for CTD was %5.1f m. ',Op.MaxProfCTD);
-    fprintf(      '     > Maximum depth for CTD was %5.2f m. \n',Op.MaxProfCTD);
+    fprintf(      ' Maximum depth for CTD was %5.2f m. \n',Op.MaxProfCTD);
 end
 
 if (now-Op.DepartingDate)<0
-    fprintf('     > Days to departure: %4.2f \n\n',abs((now-Op.DepartingDate)))
+    if Op.Idioma==1
+        fprintf('Días para el comienzo de la singladura: %4.2f \n\n',abs((now-Op.DepartingDate)))
+    elseif Op.Idioma==2
+        fprintf('Days to departure: %4.2f \n\n',abs((now-Op.DepartingDate)))
+    end
 else
-    fprintf('     >Days since departure: %4.2f \n\n',(now-Op.DepartingDate))
+    if Op.Idioma==1
+        fprintf('Días desde el comienzo de la singladura: %4.2f \n\n',(now-Op.DepartingDate))
+    elseif Op.Idioma==2
+        fprintf('Days since departure: %4.2f \n\n',(now-Op.DepartingDate))
+    end
 end
 
 fprintf(fid,'------------------------------------------------------------------------------------\n');
 if Op.Idioma==1
-    fprintf(fid,'Estacion     - Nombre de la estacion.\n');
-    fprintf(fid,'Operacion   - Codigo de la operacion.\n');
-    fprintf(fid,'LatG        - Degrees de latitud.\n');
-    fprintf(fid,'LatM        - Minutes de latitud.\n');
-    fprintf(fid,'LonG        - Degrees de longitud.\n');
-    fprintf(fid,'LonM        - Minutes de longitud.\n');
-    fprintf(fid,'Pro-m       - Profundidad (metros) en la estacion.\n');
-    fprintf(fid,'Arriv. date - Arrival date to the station.\n');
-    fprintf(fid,'Hour        - Hour of arrival to the station.\n');
-    fprintf(fid,'WHours      - Hours working in the station.\n');
-    fprintf(fid,'Day         - Cruise day (the cruise begins in day 1).\n');
-    fprintf(fid,'Naveg       - Navegation to the next station in nautical miles.\n');
-elseif Op.Idioma==1
+    fprintf(fid,'Estación     - Nombre de la estación.\n');
+    fprintf(fid,'Operación    - Código de la operación.\n');
+    fprintf(fid,'LatG         - Grados de latitud.\n');
+    fprintf(fid,'LatM         - Minutos de latitud.\n');
+    fprintf(fid,'LonG         - Grados de longitud.\n');
+    fprintf(fid,'LonM         - Minutos de longitud.\n');
+    fprintf(fid,'Pro-m        - Profundidad (metros) en la estación.\n');
+    fprintf(fid,'Fecha llegada- Fecha llegada a la estación.\n');
+    fprintf(fid,'Hora         - Hora llegada a la estación.\n');
+    fprintf(fid,'horasT       - Horas de trabajo en la estación.\n');
+    fprintf(fid,'Dia          - Dia de campaña (La campaña comienza el día 1).\n');
+    fprintf(fid,'Naveg        - Navegación a la siguiente estación en millas nauticas.\n');
+elseif Op.Idioma==2
     fprintf(fid,'Station     - Name of the station.\n');
     fprintf(fid,'Operation   - Operation code (depart port, waypoint, CTD, ,...) for the stations.\n');
     fprintf(fid,'LatG        - Degrees of latitude.\n');
@@ -1040,24 +1242,29 @@ end
 fclose(fid);
 
 %% Output data
+DataOut.PointID=PointID;
+DataOut.TimeAtPoint=TimeAtPoint;
 DataOut.Nombre=PointName;
 DataOut.Lon=PointLon;
 DataOut.Lat=PointLat;
 DataOut.Codigo=PointID;
 DataOut.Profundidad=PointDepth;
 DataOut.hp=hp;
+DataOut.DiaCampana=DiaCampana;
+DataOut.DateAtPoint=DateAfterPoint-TimeAtPoint/24;
 
-%% Google earth
-if isfield(Op,'OutputGEarth')==1
-    if Op.OutputGEarth==1
+
+%% Formato Kml (Google earth)
+if isfield(Op,'OutputKml')==1
+    if Op.OutputKml==1
         imagesdir=which(mfilename);
         iconfilename=strcat(imagesdir(1:end-14),'Images/','circle','_','b','.png');
         if exist(iconfilename,'file')
             kmlwritepoint(strcat('PlanCampanha',Op.Cruise),PointLat,PointLon,'Name', ...
-                GEnombrePunto,'Description',GEDescripcionPunto,'Icon',iconfilename,'IconScale',.5)
+                KmlNombrePunto,'Description',KmlDescripcionPunto,'Icon',iconfilename,'IconScale',.5)
         else
             kmlwritepoint(strcat('PlanCampanha',Op.Cruise),PointLat,PointLon,'Name', ...
-                GEnombrePunto,'Description',GEDescripcionPunto)
+                KmlNombrePunto,'Description',KmlDescripcionPunto)
         end
     end
 end
@@ -1069,8 +1276,8 @@ if isfield(Op,'OutputGPX')==1
     fprintf(fid,'<gpx version="1.1">\n');
     for iest=1:length(PointLat)
         fprintf(fid, '<wpt lat="%12.9f" lon="%12.9f">\n',PointLat(iest),PointLon(iest));
-        fprintf(fid, '    <name>%s</name>\n',GEnombrePunto{iest});
-        fprintf(fid, '    <desc>%s</desc> \n',GEDescripcionPunto{iest});
+        fprintf(fid, '    <name>%s</name>\n',KmlNombrePunto{iest});
+        fprintf(fid, '    <desc>%s</desc> \n',KmlDescripcionPunto{iest});
         fprintf(fid, '    <sym>circle</sym>\n');
         fprintf(fid,'    <type>WPT</type>\n');
         fprintf(fid, '</wpt>\n');
@@ -1079,11 +1286,10 @@ if isfield(Op,'OutputGPX')==1
 end
 
 if isfield(Op,'OutputMFP')==1
-
     fid = fopen(strcat('PlanCampanha',Op.Cruise,'.csv'),'w');
     fprintf(fid, 'Station Type;Name;Latitude;Longitude\n');
     for iest=1:length(PointLat)
-        if PointID(iest)==1 | PointID(iest)==12 | PointID(iest)==13| PointID(iest)==14| PointID(iest)<0
+        if PointID(iest)==1 | PointID(iest)==11 | PointID(iest)==12 | PointID(iest)==13| PointID(iest)==14| PointID(iest)<0
             fprintf(fid, 'Sampling Station;%s;%9.5f;%9.5f\n',PointName{iest},PointLat(iest),PointLon(iest));
         elseif PointID(iest)==7| PointID(iest)==8
             fprintf(fid, 'Mooring;%s;%9.5f;%9.5f\n',PointName{iest},PointLat(iest),PointLon(iest));
@@ -1155,7 +1361,7 @@ if isfield(Op,'OutputFigures')==1
         print(1, '-dpng',strcat('PlanCampanha',Op.Cruise,'3D.png'))
 
     end
-    %Backward cvompatibility
+    % Backward cvompatibility
     if length(Op.OutputFigures)==2
         CreaFigura(1,strcat('PlanCampanha',Op.Cruise),Op.OutputFigures);
     end
@@ -1168,7 +1374,7 @@ end
 %% Funciones
 %--------------------------------------------------------------------------
 
-%% AddImageSatelite
+% AddImageSatelite
 function D=AddImageSatelite(ImagenSateliteType,ImagenSateliteDayi,GlobalDS)
 if contains(ImagenSateliteType,'A.L3m')
     D=ReadAquaL3m(ImagenSateliteType,ImagenSateliteDayi,GlobalDS);
@@ -1190,8 +1396,7 @@ elseif isfield(D,'sst')==1
     clim([16 27])
 end
 end
-
-%%  Locate
+% Locate
 function j=Locate(xx,x)
 % Givern an array XX, and given a value x, returns J such that x is between
 % xx(j) and xx(j+1), xx must be monotic, either increasing or decresing order.
@@ -1216,8 +1421,7 @@ while (ju-jl) > 1
 end
 j=jl;
 end
-
-%% rgb
+% rgb
 function rgb = rgb(s)
 persistent num name
 if isempty(num) % First time rgb is called
@@ -1240,8 +1444,7 @@ else
     end
 end
 end
-
-%% showcolors
+% showcolors
 function showcolors()
 [~,name] = getcolors();
 grp = {'White', 'Gray', 'Red', 'Pink', 'Orange', 'Yellow', 'Brown'...
@@ -1291,8 +1494,7 @@ for col = 1:length(J)-1
     x = x + w;
 end
 end
-
-%% getcolors
+% getcolors
 function [hex,name] = getcolors()
 css = {
     %White colors
