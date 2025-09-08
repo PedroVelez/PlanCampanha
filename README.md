@@ -1,4 +1,4 @@
-# PlanCampanha
+# Plan de Campaña
 
 Usage:
 
@@ -115,5 +115,16 @@ Op.OutputKml=1;
 Op.OutputMat=1;  
 Op.OutputGPX=1;  
 Op.OutputFigures=[4 7];   
+
+## Additional tools
+
+*ginput2PlanCampana* - Call m_ginput that allows to select points in a mat and output the chosen values in the .csv format read by PlanCampanha 
+*gpx2PlanCampana* - Read a .gpx files and output in the .csv format read by PlanCampanha 
+
+*CalculaRadialZonal* - 
+
+*CalculaRadialMeridional* - 
+
+*CalculaRadial* - 
 
 --------- Created by Pedro Velez Belchi (IEO) in 2002 ... 

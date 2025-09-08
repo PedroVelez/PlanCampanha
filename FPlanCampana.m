@@ -1098,22 +1098,22 @@ fprintf(    '\n-----------------------------------------------------------------
 if Op.Idioma==1
     fprintf('RESUMEN ----------------------------------------------------------------------------------------------\n\n');
     fprintf('%s: %s [%s] - %s [%s], %4d estaciones, %5.1f millas, %5.2f dias a %3.1f nudos\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
-    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+        Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+        length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
     fprintf(fid,'RESUMEN ----------------------------------------------------------------------------------------------\n\n');
     fprintf(fid,'%s: %s [%s] - %s [%s], %4d estaciones, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
-    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+        Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+        length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
 
 elseif Op.Idioma==2
     fprintf('SUMMARY ----------------------------------------------------------------------------------------------\n\n');
     fprintf('%s: %s [%s] - %s [%s], %4d stations, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
-    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
-   fprintf(fid,'SUMMARY ----------------------------------------------------------------------------------------------\n\n');
-fprintf(fid,'%s: %s [%s] - %s [%s], %4d stations, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
-    Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
-    length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+        Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+        length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
+    fprintf(fid,'SUMMARY ----------------------------------------------------------------------------------------------\n\n');
+    fprintf(fid,'%s: %s [%s] - %s [%s], %4d stations, %5.1f miles, %5.2f days at %3.1f knots\n\n', ...
+        Op.Cruise,PointName{1},datestr(DateAfterPoint(1),0),PointName{end},datestr(DateAfterPoint(end),0), ...
+        length(indiceEST),TotalDistance,DateAfterPoint(end)-Op.DepartingDate,Op.VelocityVessel);
 end
 
 for i1=[1,11,12,13,14,15,3,4,5,6,7,8]
@@ -1133,18 +1133,18 @@ for i1=[1,11,12,13,14,15,3,4,5,6,7,8]
     end
 end
 if ~isempty(find(PointID<0, 1))
-fprintf('%s: %3d [', OperationID{20}, length(find(PointID<0)));
- fprintf(fid  ,'%s: %3d [', OperationID{20}, length(find(PointID<0)));
-       estaciones=find(PointID<0);
-        for i2=1: length(estaciones)
-            if i2==length(estaciones)
-                fprintf('%s]\n\n',PointName{estaciones(i2)});
-                fprintf(fid,'%s] \n\n',PointName{estaciones(i2)});
-            else
-                fprintf('%s, ',PointName{estaciones(i2)});
-                fprintf(fid,'%s, ',PointName{estaciones(i2)});
-            end
+    fprintf('%s: %3d [', OperationID{20}, length(find(PointID<0)));
+    fprintf(fid  ,'%s: %3d [', OperationID{20}, length(find(PointID<0)));
+    estaciones=find(PointID<0);
+    for i2=1: length(estaciones)
+        if i2==length(estaciones)
+            fprintf('%s]\n\n',PointName{estaciones(i2)});
+            fprintf(fid,'%s] \n\n',PointName{estaciones(i2)});
+        else
+            fprintf('%s, ',PointName{estaciones(i2)});
+            fprintf(fid,'%s, ',PointName{estaciones(i2)});
         end
+    end
 end
 
 if Op.Delay>0
@@ -1361,10 +1361,10 @@ if isfield(Op,'OutputFigures')==1
         print(1, '-dpng',strcat('PlanCampanha',Op.Cruise,'3D.png'))
 
     end
-    % Backward cvompatibility
-    if length(Op.OutputFigures)==2
-        CreaFigura(1,strcat('PlanCampanha',Op.Cruise),Op.OutputFigures);
-    end
+    % Backward compatibility
+    %if length(Op.OutputFigures)==2
+    %    CreaFigura(1,strcat('PlanCampanha',Op.Cruise),Op.OutputFigures);
+    %end
 end
 
 
@@ -1396,6 +1396,7 @@ elseif isfield(D,'sst')==1
     clim([16 27])
 end
 end
+
 % Locate
 function j=Locate(xx,x)
 % Givern an array XX, and given a value x, returns J such that x is between
@@ -1421,6 +1422,7 @@ while (ju-jl) > 1
 end
 j=jl;
 end
+
 % rgb
 function rgb = rgb(s)
 persistent num name
@@ -1444,6 +1446,7 @@ else
     end
 end
 end
+
 % showcolors
 function showcolors()
 [~,name] = getcolors();
@@ -1494,6 +1497,7 @@ for col = 1:length(J)-1
     x = x + w;
 end
 end
+
 % getcolors
 function [hex,name] = getcolors()
 css = {
@@ -1660,3 +1664,45 @@ css = {
 hex = css(:,1:3);
 name = css(:,4);
 end
+
+% LogoIEO
+
+function haxesL=LogoIEO(Type,Position)
+if nargin==0
+    Type=1;
+    h=get(gca,'Position');
+    Position=[h(1)+h(3)-0.14  h(2)+0.14   0.16 0.16];
+elseif nargin==1
+    switch Type
+        case 1
+            Position=[0.58 0.35 0.14 0.14];
+        case 2
+            Position=[0.58 0.35 0.20 0.20];
+        case 3
+            Position=[0.55 0.08 0.25 .14];
+        case 4
+            Position=[0.55 0.08 0.25 .14];
+        case 5
+            Position=[0.58 0.35 0.14 0.14];
+    end
+end
+LogoFile=strcat('LogoIEO',num2str(Type),'.png');
+if exist(LogoFile,'file') == 2
+    [img, map, alphachannel]=imread(LogoFile);
+    haxesL=axes;
+    haxesL.PlotBoxAspectRatio=[1 1 1];
+    himagL=image(img, 'AlphaData', alphachannel);
+    haxesL.Position=Position;
+    haxesL.Color='none';
+    haxesL.XTickLabel='';
+    haxesL.YTickLabel='';
+    haxesL.Box='off';
+    haxesL.DataAspectRatioMode='auto';
+    haxesL.DataAspectRatio=[1 1 1];
+    haxesL.XColor='none';
+    haxesL.YColor='none';
+else
+    sprintf('WARNING There is not logo file %s',LogoFile)
+end
+end
+
