@@ -6,7 +6,7 @@ Usage:
 
 This code helps to design a cruise planning, computing the arrival time to station, total time, ... 
 
-The operations in the cruise plan should be in file named 'Estaciones'+CruiseName+.csv,for example: *EstacionesRaprocan2508.csv* This cruise is included as an example.
+The operations in the cruise plan should be in file named 'Estaciones'+CruiseName+.csv,for example: *EstacionesRaprocan2508.txt* This cruise is included as an example.
 The file should contain a linea for each operation, with the format  *Name of the station;longitude in decimal degrees;latitude in decimal degrees;type of operation*
 
 For instance, a file Departing and arriving to Santa Cruz de Tenerife, with 3 CTD stations, Bongo, WP2 net and deploying a mooring will be:
@@ -27,7 +27,9 @@ EBC7      ;-13.0862;28.6789;7
 Santa Cruz;-16.2300;28.4800;9
 ```
 
-In the folder *./Example* there is an script *PlanCampanha* that creates the cruise plan for *EstacionesRaprocan2508.csv* all the output files are also in the folder.
+In the folder *./Example* the script *PlanCampanha* creates the cruise plan for [*EstacionesRaprocan2508.txt*](https://raw.githubusercontent.com/PedroVelez/PlanCampanha/3d4846d31262263790f7a7bfde542e2ac2a0a3c9/Example/EstacionesRaprocan2508.txt) all the output files are also in the folder.
+
+<img src="https://github.com/PedroVelez/PlanCampanha/blob/3d4846d31262263790f7a7bfde542e2ac2a0a3c9/Example/PlanCampanhaRaprocan2508.png?raw=true" alt="cruisePlan" width="800"/>
 
 ## Types of operations (fourth field in the station file) are:
 
@@ -111,10 +113,12 @@ Op.ZEE=0;                 % [1/0] to add ZEE lines
 
 ### Outputs options
 
-Op.OutputKml=1;  
-Op.OutputMat=1;  
-Op.OutputGPX=1;  
-Op.OutputFigures=[4 7];   
+Op.OutputCsv=1;   %Output in csv format compatible with https://www.marinefacilitiesplanning.com/
+Op.OutputKml=1;   %Output in .kml, compatible with Google Earth
+Op.OutputMat=1;   %Output in .mat matlab format
+Op.OutputGPX=1;   %Output in .gpx format, compatible with OpenCPN
+
+Op.OutputFigures=1; %Create figures in 1 .png 2 .png and .pdf formats
 
 ## Additional tools
 
@@ -126,5 +130,22 @@ Op.OutputFigures=[4 7];
 *CalculaRadialMeridional* - 
 
 *CalculaRadial* - 
+
+
+### embeded functions
+
+With in FPlanCampana there are some functions inclued:
+
+* function D=AddImageSatelite(ImagenSateliteType,ImagenSateliteDayi,GlobalDS) % AddImageSatelite
+
+* function j=Locate(xx,x) % Locate
+
+* function rgb = rgb(s) % rgb
+
+* function showcolors() % showcolors
+
+* function [hex,name] = getcolors() % getcolors
+
+* function haxesL=LogoIEO(Type,Position) % LogoIEO
 
 --------- Created by Pedro Velez Belchi (IEO) in 2002 ... 
