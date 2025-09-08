@@ -16,7 +16,7 @@ Santa Cruz;-16.23;28.48;10
 Waypoint  ;-16.1191;28.4961;2
 Waypoint  ;-16.01  ;28.57  ;2
 24        ;-18.4963;29.1667;1
-24-Zoo    ;-18.4963;29.1667;11
+24-WP2    ;-18.4963;29.1667;11
 24-Bongo  ;-18.4963;29.1667;12
 24-Avani  ;-18.4963;29.1667;13
 15        ;-15.5007;29.1667;1
@@ -30,6 +30,58 @@ Santa Cruz;-16.2300;28.4800;9
 In the folder *./Example* the script *PlanCampanha* creates the cruise plan for [*EstacionesRaprocan2508.txt*](https://raw.githubusercontent.com/PedroVelez/PlanCampanha/3d4846d31262263790f7a7bfde542e2ac2a0a3c9/Example/EstacionesRaprocan2508.txt) all the output files are also in the folder.
 
 <img src="https://github.com/PedroVelez/PlanCampanha/blob/3d4846d31262263790f7a7bfde542e2ac2a0a3c9/Example/PlanCampanhaRaprocan2508.png?raw=true" alt="cruisePlan" width="800"/>
+
+the information provide looks like:
+
+```
+Estación           ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llegada  ;Hora ;horasT;Dia ;Naveg
+Santa Cruz         ;P. Salida   ; -16;13.800;  28;28.800;-----;Sat 09 Aug 2025;19:00; -----; 1.0;  5.9
+Waypoint           ;Waypoint    ; -16; 7.146;  28;29.766;-----;Sat 09 Aug 2025;20:09; -----; 1.0;  7.3
+Waypoint           ;Waypoint    ; -16; 0.600;  28;34.200;-----;Sat 09 Aug 2025;20:51; -----; 1.1;135.0
+24                 ;EstacionCTD ; -18;29.778;  29;10.002; 4245;Sun 10 Aug 2025;18:39;   2.9; 2.0;  0.0
+24-Zoo             ;Red WP2     ; -18;29.778;  29;10.002; 4245;Sun 10 Aug 2025;21:31;   0.5; 2.1;  0.0
+24-Bongo           ;Red Bongo 90; -18;29.778;  29;10.002; 4245;Sun 10 Aug 2025;22:01;   0.5; 2.1;  0.0
+24-Avani           ;Red Avani   ; -18;29.778;  29;10.002; 4245;Sun 10 Aug 2025;22:31;   0.5; 2.1; 13.3
+15                 ;EstacionCTD ; -15;30.042;  29;10.002; 3604;Wed 13 Aug 2025;00:35;   2.5; 4.2;  0.0
+15-WP2             ;Red WP2     ; -15;30.042;  29;10.002; 3604;Wed 13 Aug 2025;03:05;   0.5; 4.3;  0.0
+07                 ;EstacionCTD ; -13;12.372;  28;42.528; 1071;Fri 15 Aug 2025;04:49;   1.1; 6.4;  6.6
+EBC7               ;Despl.fondeo; -13; 5.172;  28;40.734;  760;Fri 15 Aug 2025;16:47;   0.9; 6.9;  4.3
+Santa Cruz         ;P. llegada  ; -16;13.800;  28;28.800;-----;Thu 21 Aug 2025;09:47; -----;12.6;-----
+
+------------------------------------------------------------------------------------------------------
+RESUMEN ----------------------------------------------------------------------------------------------
+
+Raprocan2508: Santa Cruz [09-Aug-2025 19:00:00] - Santa Cruz [21-Aug-2025 09:47:32],  120 estaciones, 1038.5 miles, 11.62 days at 10.5 knots
+
+EstacionCTD :  3 [24, 15, 7] 
+
+Red WP2     :  2 [24-WP2, 15-WP2] 
+
+Red Bongo 90:  1 [24-Bongo] 
+
+Red Avani   :  15 [24-Avani, 21-Avani, 18-Avani, 15-Avani, 12-Avani, 09-Avani, 06-Avani, 51-Avani, 48-Avani, 45-Avani, 42-Avani, 36-Avani, 33-Avani, 30-Avani, 26-Avani] 
+
+Despl.fondeo:   1 [EBC7] 
+
+Time delay used for adjustment: 0.02 
+
+El tiempo en cada estación se ha estimado usando la profundidad y una velocidad de descenso/ascenso de 60/50/50/40 (CTD/BC/GC/ROV) m/min. En cada estación CTD se han añadido 0.50 h para posicionamiento.
+Para los fondeos/landers el tiempo se ha estimado usando la profundidad, con una velocidad de largado de  55/30 m/min, y 0.50/1.00 h adicionales. 
+
+------------------------------------------------------------------------------------
+Estación     - Nombre de la estación.
+Operación    - Código de la operación.
+LatG         - Grados de latitud.
+LatM         - Minutos de latitud.
+LonG         - Grados de longitud.
+LonM         - Minutos de longitud.
+Pro-m        - Profundidad (metros) en la estación.
+Fecha llegada- Fecha llegada a la estación.
+Hora         - Hora llegada a la estación.
+horasT       - Horas de trabajo en la estación.
+Dia          - Dia de campaña (La campaña comienza el día 1).
+Naveg        - Navegación a la siguiente estación en millas nauticas.
+```
 
 ## Types of operations (fourth field in the station file) are:
 
