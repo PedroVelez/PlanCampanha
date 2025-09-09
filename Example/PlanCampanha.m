@@ -45,7 +45,7 @@ Op.Subtitle=2;        %[0/1/2]for subtitle
 
 Op.Legend=1;          %[0/1/2]for subtitle
 
-Op.Idioma=1;          %[1/2] Español/Ingles
+Op.Idioma=2;          %[1/2] Español/Ingles
 
 Op.MoorTick=1;  
 

@@ -1046,7 +1046,7 @@ end
 
 %% Add Logo
 if Op.Logo==1
-    LogoIEO;
+    Logo;
 end
 
 %% legenda
@@ -1665,9 +1665,9 @@ hex = css(:,1:3);
 name = css(:,4);
 end
 
-% LogoIEO
+% Logo
 
-function haxesL=LogoIEO(Type,Position)
+function haxesL=Logo(Type,Position)
 if nargin==0
     Type=1;
     h=get(gca,'Position');

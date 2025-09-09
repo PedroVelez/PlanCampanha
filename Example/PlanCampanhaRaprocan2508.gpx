@@ -26,7 +26,7 @@ Date 09-Aug-2025 20:51:22
 </wpt>
 <wpt lat="29.166700000" lon="-18.486300000">
     <name>24-Pies433</name>
-    <desc>Station 24-Pies433 - Red WP2     
+    <desc>Station 24-Pies433 - Net WP2     
 Fecha llegada a la estación Sun 10 Aug 2025 - 09:42
 Profundidad estación: 4227 metros
 Tiempo en estación:8.40 horas
@@ -36,7 +36,7 @@ Tiempo en estación:8.40 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.496300000">
     <name>24-Zoo</name>
-    <desc>Station 24-Zoo - Red WP2     
+    <desc>Station 24-Zoo - Net WP2     
 Fecha llegada a la estación Sun 10 Aug 2025 - 18:09
 Profundidad estación: 4245 metros
 Tiempo en estación:0.50 horas
@@ -46,7 +46,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.496300000">
     <name>24</name>
-    <desc>Station 24 - EstacionCTD 
+    <desc>Station 24 - Station CTD
 Fecha llegada a la estación Sun 10 Aug 2025 - 18:39
 Profundidad estación: 4245 metros
 Tiempo en estación:2.86 horas
@@ -56,7 +56,7 @@ Tiempo en estación:2.86 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.496300000">
     <name>24-Zoo</name>
-    <desc>Station 24-Zoo - Red WP2     
+    <desc>Station 24-Zoo - Net WP2     
 Fecha llegada a la estación Sun 10 Aug 2025 - 21:31
 Profundidad estación: 4245 metros
 Tiempo en estación:0.50 horas
@@ -66,7 +66,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.496300000">
     <name>24-Bongo</name>
-    <desc>Station 24-Bongo - Red Bongo 90
+    <desc>Station 24-Bongo - Net Bongo 90
 Fecha llegada a la estación Sun 10 Aug 2025 - 22:01
 Profundidad estación: 4245 metros
 Tiempo en estación:0.50 horas
@@ -76,7 +76,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.496300000">
     <name>24-Avani</name>
-    <desc>Station 24-Avani - Red Avani   
+    <desc>Station 24-Avani - Net Avani   
 Fecha llegada a la estación Sun 10 Aug 2025 - 22:31
 Profundidad estación: 4245 metros
 Tiempo en estación:0.50 horas
@@ -86,7 +86,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.242500000">
     <name>23</name>
-    <desc>Station 23 - EstacionCTD 
+    <desc>Station 23 - Station CTD
 Fecha llegada a la estación Mon 11 Aug 2025 - 00:16
 Profundidad estación: 3989 metros
 Tiempo en estación:2.72 horas
@@ -96,7 +96,7 @@ Tiempo en estación:2.72 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.002500000">
     <name>22</name>
-    <desc>Station 22 - EstacionCTD 
+    <desc>Station 22 - Station CTD
 Fecha llegada a la estación Mon 11 Aug 2025 - 04:11
 Profundidad estación: 3662 metros
 Tiempo en estación:2.53 horas
@@ -106,7 +106,7 @@ Tiempo en estación:2.53 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.002500000">
     <name>22-Zoo</name>
-    <desc>Station 22-Zoo - Red WP2     
+    <desc>Station 22-Zoo - Net WP2     
 Fecha llegada a la estación Mon 11 Aug 2025 - 06:43
 Profundidad estación: 3662 metros
 Tiempo en estación:0.50 horas
@@ -116,7 +116,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-18.002500000">
     <name>22-Bongo</name>
-    <desc>Station 22-Bongo - Red Bongo 90
+    <desc>Station 22-Bongo - Net Bongo 90
 Fecha llegada a la estación Mon 11 Aug 2025 - 07:13
 Profundidad estación: 3662 metros
 Tiempo en estación:0.50 horas
@@ -126,7 +126,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-17.654300000">
     <name>21</name>
-    <desc>Station 21 - EstacionCTD 
+    <desc>Station 21 - Station CTD
 Fecha llegada a la estación Mon 11 Aug 2025 - 09:28
 Profundidad estación: 3695 metros
 Tiempo en estación:2.55 horas
@@ -136,7 +136,7 @@ Tiempo en estación:2.55 horas
 </wpt>
 <wpt lat="29.166700000" lon="-17.654300000">
     <name>21-Avani</name>
-    <desc>Station 21-Avani - Red Avani   
+    <desc>Station 21-Avani - Net Avani   
 Fecha llegada a la estación Mon 11 Aug 2025 - 12:01
 Profundidad estación: 3695 metros
 Tiempo en estación:0.50 horas
@@ -146,7 +146,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-17.286200000">
     <name>20</name>
-    <desc>Station 20 - EstacionCTD 
+    <desc>Station 20 - Station CTD
 Fecha llegada a la estación Mon 11 Aug 2025 - 14:21
 Profundidad estación: 3890 metros
 Tiempo en estación:2.66 horas
@@ -156,7 +156,7 @@ Tiempo en estación:2.66 horas
 </wpt>
 <wpt lat="29.166700000" lon="-17.286200000">
     <name>20-Zoo</name>
-    <desc>Station 20-Zoo - Red WP2     
+    <desc>Station 20-Zoo - Net WP2     
 Fecha llegada a la estación Mon 11 Aug 2025 - 17:01
 Profundidad estación: 3890 metros
 Tiempo en estación:0.50 horas
@@ -166,7 +166,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-17.286200000">
     <name>20-Bongo</name>
-    <desc>Station 20-Bongo - Red Bongo 90
+    <desc>Station 20-Bongo - Net Bongo 90
 Fecha llegada a la estación Mon 11 Aug 2025 - 17:31
 Profundidad estación: 3890 metros
 Tiempo en estación:0.50 horas
@@ -176,7 +176,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.913600000">
     <name>19</name>
-    <desc>Station 19 - EstacionCTD 
+    <desc>Station 19 - Station CTD
 Fecha llegada a la estación Mon 11 Aug 2025 - 19:52
 Profundidad estación: 3843 metros
 Tiempo en estación:2.63 horas
@@ -186,7 +186,7 @@ Tiempo en estación:2.63 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.568300000">
     <name>18</name>
-    <desc>Station 18 - EstacionCTD 
+    <desc>Station 18 - Station CTD
 Fecha llegada a la estación Tue 12 Aug 2025 - 00:14
 Profundidad estación: 3725 metros
 Tiempo en estación:2.57 horas
@@ -196,7 +196,7 @@ Tiempo en estación:2.57 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.568300000">
     <name>18-Zoo</name>
-    <desc>Station 18-Zoo - Red WP2     
+    <desc>Station 18-Zoo - Net WP2     
 Fecha llegada a la estación Tue 12 Aug 2025 - 02:48
 Profundidad estación: 3725 metros
 Tiempo en estación:0.50 horas
@@ -206,7 +206,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.568300000">
     <name>18-Bongo</name>
-    <desc>Station 18-Bongo - Red Bongo 90
+    <desc>Station 18-Bongo - Net Bongo 90
 Fecha llegada a la estación Tue 12 Aug 2025 - 03:18
 Profundidad estación: 3725 metros
 Tiempo en estación:0.50 horas
@@ -216,7 +216,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.568300000">
     <name>18-Avani</name>
-    <desc>Station 18-Avani - Red Avani   
+    <desc>Station 18-Avani - Net Avani   
 Fecha llegada a la estación Tue 12 Aug 2025 - 03:48
 Profundidad estación: 3725 metros
 Tiempo en estación:0.50 horas
@@ -226,7 +226,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-16.197900000">
     <name>17</name>
-    <desc>Station 17 - EstacionCTD 
+    <desc>Station 17 - Station CTD
 Fecha llegada a la estación Tue 12 Aug 2025 - 06:09
 Profundidad estación: 3672 metros
 Tiempo en estación:2.54 horas
@@ -236,7 +236,7 @@ Tiempo en estación:2.54 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.834700000">
     <name>16</name>
-    <desc>Station 16 - EstacionCTD 
+    <desc>Station 16 - Station CTD
 Fecha llegada a la estación Tue 12 Aug 2025 - 10:30
 Profundidad estación: 3627 metros
 Tiempo en estación:2.51 horas
@@ -246,7 +246,7 @@ Tiempo en estación:2.51 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.834700000">
     <name>16-Zoo</name>
-    <desc>Station 16-Zoo - Red WP2     
+    <desc>Station 16-Zoo - Net WP2     
 Fecha llegada a la estación Tue 12 Aug 2025 - 13:01
 Profundidad estación: 3627 metros
 Tiempo en estación:0.50 horas
@@ -256,7 +256,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.834700000">
     <name>16-Bongo</name>
-    <desc>Station 16-Bongo - Red Bongo 90
+    <desc>Station 16-Bongo - Net Bongo 90
 Fecha llegada a la estación Tue 12 Aug 2025 - 13:31
 Profundidad estación: 3627 metros
 Tiempo en estación:0.50 horas
@@ -266,7 +266,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.165000000" lon="-15.501800000">
     <name>15-Pies432</name>
-    <desc>Station 15-Pies432 - Red WP2     
+    <desc>Station 15-Pies432 - Net WP2     
 Fecha llegada a la estación Tue 12 Aug 2025 - 15:40
 Profundidad estación: 3604 metros
 Tiempo en estación:8.40 horas
@@ -276,7 +276,7 @@ Tiempo en estación:8.40 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.500700000">
     <name>15-WP2</name>
-    <desc>Station 15-WP2 - Red WP2     
+    <desc>Station 15-WP2 - Net WP2     
 Fecha llegada a la estación Wed 13 Aug 2025 - 00:05
 Profundidad estación: 3604 metros
 Tiempo en estación:0.50 horas
@@ -286,7 +286,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.500700000">
     <name>15</name>
-    <desc>Station 15 - EstacionCTD 
+    <desc>Station 15 - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 00:35
 Profundidad estación: 3604 metros
 Tiempo en estación:2.50 horas
@@ -296,7 +296,7 @@ Tiempo en estación:2.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.500700000">
     <name>15-WP2</name>
-    <desc>Station 15-WP2 - Red WP2     
+    <desc>Station 15-WP2 - Net WP2     
 Fecha llegada a la estación Wed 13 Aug 2025 - 03:05
 Profundidad estación: 3604 metros
 Tiempo en estación:0.50 horas
@@ -306,7 +306,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.500700000">
     <name>15B</name>
-    <desc>Station 15B - EstacionCTD 
+    <desc>Station 15B - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 03:35
 Profundidad estación: 3604 metros
 Tiempo en estación:2.50 horas
@@ -316,7 +316,7 @@ Tiempo en estación:2.50 horas
 </wpt>
 <wpt lat="29.166700000" lon="-15.500700000">
     <name>15-Avani</name>
-    <desc>Station 15-Avani - Red Avani   
+    <desc>Station 15-Avani - Net Avani   
 Fecha llegada a la estación Wed 13 Aug 2025 - 06:05
 Profundidad estación: 3604 metros
 Tiempo en estación:0.50 horas
@@ -326,7 +326,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.095500000" lon="-15.110000000">
     <name>14</name>
-    <desc>Station 14 - EstacionCTD 
+    <desc>Station 14 - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 08:35
 Profundidad estación: 3562 metros
 Tiempo en estación:2.48 horas
@@ -336,7 +336,7 @@ Tiempo en estación:2.48 horas
 </wpt>
 <wpt lat="29.095500000" lon="-15.110000000">
     <name>14-Zoo</name>
-    <desc>Station 14-Zoo - Red WP2     
+    <desc>Station 14-Zoo - Net WP2     
 Fecha llegada a la estación Wed 13 Aug 2025 - 11:04
 Profundidad estación: 3562 metros
 Tiempo en estación:0.50 horas
@@ -346,7 +346,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.095500000" lon="-15.110000000">
     <name>14-Bongo</name>
-    <desc>Station 14-Bongo - Red Bongo 90
+    <desc>Station 14-Bongo - Net Bongo 90
 Fecha llegada a la estación Wed 13 Aug 2025 - 11:34
 Profundidad estación: 3562 metros
 Tiempo en estación:0.50 horas
@@ -356,7 +356,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="29.016600000" lon="-14.729700000">
     <name>13</name>
-    <desc>Station 13 - EstacionCTD 
+    <desc>Station 13 - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 14:01
 Profundidad estación: 3511 metros
 Tiempo en estación:2.45 horas
@@ -366,7 +366,7 @@ Tiempo en estación:2.45 horas
 </wpt>
 <wpt lat="28.939300000" lon="-14.375700000">
     <name>12</name>
-    <desc>Station 12 - EstacionCTD 
+    <desc>Station 12 - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 18:17
 Profundidad estación: 2935 metros
 Tiempo en estación:2.13 horas
@@ -376,7 +376,7 @@ Tiempo en estación:2.13 horas
 </wpt>
 <wpt lat="28.939300000" lon="-14.375700000">
     <name>12-Zoo</name>
-    <desc>Station 12-Zoo - Red WP2     
+    <desc>Station 12-Zoo - Net WP2     
 Fecha llegada a la estación Wed 13 Aug 2025 - 20:25
 Profundidad estación: 2935 metros
 Tiempo en estación:0.50 horas
@@ -386,7 +386,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.939300000" lon="-14.375700000">
     <name>12-Bongo</name>
-    <desc>Station 12-Bongo - Red Bongo 90
+    <desc>Station 12-Bongo - Net Bongo 90
 Fecha llegada a la estación Wed 13 Aug 2025 - 20:55
 Profundidad estación: 2935 metros
 Tiempo en estación:0.50 horas
@@ -396,7 +396,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.939300000" lon="-14.375700000">
     <name>12-Avani</name>
-    <desc>Station 12-Avani - Red Avani   
+    <desc>Station 12-Avani - Net Avani   
 Fecha llegada a la estación Wed 13 Aug 2025 - 21:25
 Profundidad estación: 2935 metros
 Tiempo en estación:0.50 horas
@@ -406,7 +406,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.875500000" lon="-14.102000000">
     <name>11</name>
-    <desc>Station 11 - EstacionCTD 
+    <desc>Station 11 - Station CTD
 Fecha llegada a la estación Wed 13 Aug 2025 - 23:20
 Profundidad estación: 2108 metros
 Tiempo en estación:1.67 horas
@@ -416,7 +416,7 @@ Tiempo en estación:1.67 horas
 </wpt>
 <wpt lat="28.875600000" lon="-14.102000000">
     <name>11-Pies431</name>
-    <desc>Station 11-Pies431 - Red WP2     
+    <desc>Station 11-Pies431 - Net WP2     
 Fecha llegada a la estación Thu 14 Aug 2025 - 01:00
 Profundidad estación: 2108 metros
 Tiempo en estación:8.40 horas
@@ -426,7 +426,7 @@ Tiempo en estación:8.40 horas
 </wpt>
 <wpt lat="28.802400000" lon="-13.705100000">
     <name>10</name>
-    <desc>Station 10 - EstacionCTD 
+    <desc>Station 10 - Station CTD
 Fecha llegada a la estación Thu 14 Aug 2025 - 11:26
 Profundidad estación:  858 metros
 Tiempo en estación:0.98 horas
@@ -436,7 +436,7 @@ Tiempo en estación:0.98 horas
 </wpt>
 <wpt lat="28.802400000" lon="-13.705100000">
     <name>10-Zoo</name>
-    <desc>Station 10-Zoo - Red WP2     
+    <desc>Station 10-Zoo - Net WP2     
 Fecha llegada a la estación Thu 14 Aug 2025 - 12:25
 Profundidad estación:  858 metros
 Tiempo en estación:0.50 horas
@@ -446,7 +446,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.802400000" lon="-13.705100000">
     <name>10-Pies424</name>
-    <desc>Station 10-Pies424 - Red WP2     
+    <desc>Station 10-Pies424 - Net WP2     
 Fecha llegada a la estación Thu 14 Aug 2025 - 12:55
 Profundidad estación:  858 metros
 Tiempo en estación:8.40 horas
@@ -456,7 +456,7 @@ Tiempo en estación:8.40 horas
 </wpt>
 <wpt lat="28.802400000" lon="-13.705100000">
     <name>10-Zoo</name>
-    <desc>Station 10-Zoo - Red WP2     
+    <desc>Station 10-Zoo - Net WP2     
 Fecha llegada a la estación Thu 14 Aug 2025 - 21:19
 Profundidad estación:  858 metros
 Tiempo en estación:0.50 horas
@@ -466,7 +466,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.802400000" lon="-13.705100000">
     <name>10-Bongo</name>
-    <desc>Station 10-Bongo - Red Bongo 90
+    <desc>Station 10-Bongo - Net Bongo 90
 Fecha llegada a la estación Thu 14 Aug 2025 - 21:49
 Profundidad estación:  858 metros
 Tiempo en estación:0.50 horas
@@ -476,7 +476,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.766700000" lon="-13.466700000">
     <name>09</name>
-    <desc>Station 09 - EstacionCTD 
+    <desc>Station 09 - Station CTD
 Fecha llegada a la estación Thu 14 Aug 2025 - 23:32
 Profundidad estación: 1291 metros
 Tiempo en estación:1.22 horas
@@ -486,7 +486,7 @@ Tiempo en estación:1.22 horas
 </wpt>
 <wpt lat="28.766700000" lon="-13.466700000">
     <name>09-Avani</name>
-    <desc>Station 09-Avani - Red Avani   
+    <desc>Station 09-Avani - Net Avani   
 Fecha llegada a la estación Fri 15 Aug 2025 - 00:45
 Profundidad estación: 1291 metros
 Tiempo en estación:0.50 horas
@@ -496,7 +496,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.738000000" lon="-13.362200000">
     <name>08</name>
-    <desc>Station 08 - EstacionCTD 
+    <desc>Station 08 - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 01:47
 Profundidad estación: 1305 metros
 Tiempo en estación:1.22 horas
@@ -506,7 +506,7 @@ Tiempo en estación:1.22 horas
 </wpt>
 <wpt lat="28.738000000" lon="-13.362200000">
     <name>08-Zoo</name>
-    <desc>Station 08-Zoo - Red WP2     
+    <desc>Station 08-Zoo - Net WP2     
 Fecha llegada a la estación Fri 15 Aug 2025 - 03:01
 Profundidad estación: 1305 metros
 Tiempo en estación:0.50 horas
@@ -516,7 +516,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.738000000" lon="-13.362200000">
     <name>08-Bongo</name>
-    <desc>Station 08-Bongo - Red Bongo 90
+    <desc>Station 08-Bongo - Net Bongo 90
 Fecha llegada a la estación Fri 15 Aug 2025 - 03:31
 Profundidad estación: 1305 metros
 Tiempo en estación:0.50 horas
@@ -526,7 +526,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.708800000" lon="-13.206200000">
     <name>07</name>
-    <desc>Station 07 - EstacionCTD 
+    <desc>Station 07 - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 04:49
 Profundidad estación: 1071 metros
 Tiempo en estación:1.10 horas
@@ -536,7 +536,7 @@ Tiempo en estación:1.10 horas
 </wpt>
 <wpt lat="28.678900000" lon="-13.086200000">
     <name>07-Pies422</name>
-    <desc>Station 07-Pies422 - Red WP2     
+    <desc>Station 07-Pies422 - Net WP2     
 Fecha llegada a la estación Fri 15 Aug 2025 - 06:32
 Profundidad estación:  760 metros
 Tiempo en estación:8.40 horas
@@ -546,7 +546,7 @@ Tiempo en estación:8.40 horas
 </wpt>
 <wpt lat="28.695500000" lon="-13.161400000">
     <name>07P</name>
-    <desc>Station 07P - EstacionCTD 
+    <desc>Station 07P - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 15:19
 Profundidad estación: 1015 metros
 Tiempo en estación:1.06 horas
@@ -562,7 +562,7 @@ Tiempo en estación:1.06 horas
 </wpt>
 <wpt lat="28.658800000" lon="-13.007800000">
     <name>06</name>
-    <desc>Station 06 - EstacionCTD 
+    <desc>Station 06 - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 18:07
 Profundidad estación:  602 metros
 Tiempo en estación:0.83 horas
@@ -572,7 +572,7 @@ Tiempo en estación:0.83 horas
 </wpt>
 <wpt lat="28.658800000" lon="-13.007800000">
     <name>06-WP2</name>
-    <desc>Station 06-WP2 - Red WP2     
+    <desc>Station 06-WP2 - Net WP2     
 Fecha llegada a la estación Fri 15 Aug 2025 - 18:57
 Profundidad estación:  602 metros
 Tiempo en estación:0.50 horas
@@ -582,7 +582,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.658800000" lon="-13.007800000">
     <name>06-Bongo</name>
-    <desc>Station 06-Bongo - Red Bongo 90
+    <desc>Station 06-Bongo - Net Bongo 90
 Fecha llegada a la estación Fri 15 Aug 2025 - 19:27
 Profundidad estación:  602 metros
 Tiempo en estación:0.50 horas
@@ -592,7 +592,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.658800000" lon="-13.007800000">
     <name>06-Avani</name>
-    <desc>Station 06-Avani - Red Avani   
+    <desc>Station 06-Avani - Net Avani   
 Fecha llegada a la estación Fri 15 Aug 2025 - 19:57
 Profundidad estación:  602 metros
 Tiempo en estación:0.50 horas
@@ -602,7 +602,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.626000000" lon="-12.877800000">
     <name>05</name>
-    <desc>Station 05 - EstacionCTD 
+    <desc>Station 05 - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 21:07
 Profundidad estación:  330 metros
 Tiempo en estación:0.68 horas
@@ -612,7 +612,7 @@ Tiempo en estación:0.68 horas
 </wpt>
 <wpt lat="28.493000000" lon="-13.159200000">
     <name>51</name>
-    <desc>Station 51 - EstacionCTD 
+    <desc>Station 51 - Station CTD
 Fecha llegada a la estación Fri 15 Aug 2025 - 23:25
 Profundidad estación:  887 metros
 Tiempo en estación:0.99 horas
@@ -622,7 +622,7 @@ Tiempo en estación:0.99 horas
 </wpt>
 <wpt lat="28.493000000" lon="-13.159200000">
     <name>51-Avani</name>
-    <desc>Station 51-Avani - Red Avani   
+    <desc>Station 51-Avani - Net Avani   
 Fecha llegada a la estación Sat 16 Aug 2025 - 00:24
 Profundidad estación:  887 metros
 Tiempo en estación:0.50 horas
@@ -632,7 +632,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.327300000" lon="-13.299800000">
     <name>50</name>
-    <desc>Station 50 - EstacionCTD 
+    <desc>Station 50 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 02:05
 Profundidad estación: 1138 metros
 Tiempo en estación:1.13 horas
@@ -642,7 +642,7 @@ Tiempo en estación:1.13 horas
 </wpt>
 <wpt lat="28.154700000" lon="-13.442700000">
     <name>49</name>
-    <desc>Station 49 - EstacionCTD 
+    <desc>Station 49 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 04:26
 Profundidad estación: 1230 metros
 Tiempo en estación:1.18 horas
@@ -652,7 +652,7 @@ Tiempo en estación:1.18 horas
 </wpt>
 <wpt lat="28.154700000" lon="-13.442700000">
     <name>49-WP2</name>
-    <desc>Station 49-WP2 - Red WP2     
+    <desc>Station 49-WP2 - Net WP2     
 Fecha llegada a la estación Sat 16 Aug 2025 - 05:37
 Profundidad estación: 1230 metros
 Tiempo en estación:0.50 horas
@@ -662,7 +662,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.154700000" lon="-13.442700000">
     <name>49-Bongo</name>
-    <desc>Station 49-Bongo - Red Bongo 90
+    <desc>Station 49-Bongo - Net Bongo 90
 Fecha llegada a la estación Sat 16 Aug 2025 - 06:07
 Profundidad estación: 1230 metros
 Tiempo en estación:0.50 horas
@@ -672,7 +672,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.996100000" lon="-13.583300000">
     <name>48</name>
-    <desc>Station 48 - EstacionCTD 
+    <desc>Station 48 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 07:46
 Profundidad estación: 1330 metros
 Tiempo en estación:1.24 horas
@@ -682,7 +682,7 @@ Tiempo en estación:1.24 horas
 </wpt>
 <wpt lat="27.996100000" lon="-13.583300000">
     <name>48-Avani</name>
-    <desc>Station 48-Avani - Red Avani   
+    <desc>Station 48-Avani - Net Avani   
 Fecha llegada a la estación Sat 16 Aug 2025 - 09:01
 Profundidad estación: 1330 metros
 Tiempo en estación:0.50 horas
@@ -692,7 +692,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.855500000" lon="-13.703200000">
     <name>47</name>
-    <desc>Station 47 - EstacionCTD 
+    <desc>Station 47 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 10:31
 Profundidad estación: 1337 metros
 Tiempo en estación:1.24 horas
@@ -702,7 +702,7 @@ Tiempo en estación:1.24 horas
 </wpt>
 <wpt lat="27.855500000" lon="-13.703200000">
     <name>47-WP2</name>
-    <desc>Station 47-WP2 - Red WP2     
+    <desc>Station 47-WP2 - Net WP2     
 Fecha llegada a la estación Sat 16 Aug 2025 - 11:46
 Profundidad estación: 1337 metros
 Tiempo en estación:0.50 horas
@@ -712,7 +712,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.855500000" lon="-13.703200000">
     <name>47-Bongo</name>
-    <desc>Station 47-Bongo - Red Bongo 90
+    <desc>Station 47-Bongo - Net Bongo 90
 Fecha llegada a la estación Sat 16 Aug 2025 - 12:16
 Profundidad estación: 1337 metros
 Tiempo en estación:0.50 horas
@@ -722,7 +722,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.730800000" lon="-13.800000000">
     <name>46</name>
-    <desc>Station 46 - EstacionCTD 
+    <desc>Station 46 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 13:37
 Profundidad estación: 1449 metros
 Tiempo en estación:1.31 horas
@@ -732,7 +732,7 @@ Tiempo en estación:1.31 horas
 </wpt>
 <wpt lat="27.626500000" lon="-14.000000000">
     <name>45</name>
-    <desc>Station 45 - EstacionCTD 
+    <desc>Station 45 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 16:06
 Profundidad estación: 1718 metros
 Tiempo en estación:1.45 horas
@@ -742,7 +742,7 @@ Tiempo en estación:1.45 horas
 </wpt>
 <wpt lat="27.626500000" lon="-14.000000000">
     <name>45-WP2</name>
-    <desc>Station 45-WP2 - Red WP2     
+    <desc>Station 45-WP2 - Net WP2     
 Fecha llegada a la estación Sat 16 Aug 2025 - 17:33
 Profundidad estación: 1718 metros
 Tiempo en estación:0.50 horas
@@ -752,7 +752,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.626500000" lon="-14.000000000">
     <name>45-Bongo</name>
-    <desc>Station 45-Bongo - Red Bongo 90
+    <desc>Station 45-Bongo - Net Bongo 90
 Fecha llegada a la estación Sat 16 Aug 2025 - 18:03
 Profundidad estación: 1718 metros
 Tiempo en estación:0.50 horas
@@ -762,7 +762,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.626500000" lon="-14.000000000">
     <name>45-Avani</name>
-    <desc>Station 45-Avani - Red Avani   
+    <desc>Station 45-Avani - Net Avani   
 Fecha llegada a la estación Sat 16 Aug 2025 - 18:33
 Profundidad estación: 1718 metros
 Tiempo en estación:0.50 horas
@@ -772,7 +772,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.522100000" lon="-14.250000000">
     <name>44</name>
-    <desc>Station 44 - EstacionCTD 
+    <desc>Station 44 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 20:27
 Profundidad estación: 2172 metros
 Tiempo en estación:1.71 horas
@@ -782,7 +782,7 @@ Tiempo en estación:1.71 horas
 </wpt>
 <wpt lat="27.417700000" lon="-14.500000000">
     <name>43</name>
-    <desc>Station 43 - EstacionCTD 
+    <desc>Station 43 - Station CTD
 Fecha llegada a la estación Sat 16 Aug 2025 - 23:34
 Profundidad estación: 2396 metros
 Tiempo en estación:1.83 horas
@@ -792,7 +792,7 @@ Tiempo en estación:1.83 horas
 </wpt>
 <wpt lat="27.417700000" lon="-14.500000000">
     <name>43-WP2</name>
-    <desc>Station 43-WP2 - Red WP2     
+    <desc>Station 43-WP2 - Net WP2     
 Fecha llegada a la estación Sun 17 Aug 2025 - 01:24
 Profundidad estación: 2396 metros
 Tiempo en estación:0.50 horas
@@ -802,7 +802,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.417700000" lon="-14.500000000">
     <name>43-Bongo</name>
-    <desc>Station 43-Bongo - Red Bongo 90
+    <desc>Station 43-Bongo - Net Bongo 90
 Fecha llegada a la estación Sun 17 Aug 2025 - 01:54
 Profundidad estación: 2396 metros
 Tiempo en estación:0.50 horas
@@ -812,7 +812,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.313400000" lon="-14.750000000">
     <name>42</name>
-    <desc>Station 42 - EstacionCTD 
+    <desc>Station 42 - Station CTD
 Fecha llegada a la estación Sun 17 Aug 2025 - 03:48
 Profundidad estación: 2684 metros
 Tiempo en estación:1.99 horas
@@ -822,7 +822,7 @@ Tiempo en estación:1.99 horas
 </wpt>
 <wpt lat="27.313400000" lon="-14.750000000">
     <name>42-Avani</name>
-    <desc>Station 42-Avani - Red Avani   
+    <desc>Station 42-Avani - Net Avani   
 Fecha llegada a la estación Sun 17 Aug 2025 - 05:47
 Profundidad estación: 2684 metros
 Tiempo en estación:0.50 horas
@@ -832,7 +832,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.209000000" lon="-15.000000000">
     <name>41</name>
-    <desc>Station 41 - EstacionCTD 
+    <desc>Station 41 - Station CTD
 Fecha llegada a la estación Sun 17 Aug 2025 - 07:42
 Profundidad estación: 2826 metros
 Tiempo en estación:2.07 horas
@@ -842,7 +842,7 @@ Tiempo en estación:2.07 horas
 </wpt>
 <wpt lat="27.209000000" lon="-15.000000000">
     <name>41-WP2</name>
-    <desc>Station 41-WP2 - Red WP2     
+    <desc>Station 41-WP2 - Net WP2     
 Fecha llegada a la estación Sun 17 Aug 2025 - 09:46
 Profundidad estación: 2826 metros
 Tiempo en estación:0.50 horas
@@ -852,7 +852,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.209000000" lon="-15.000000000">
     <name>41-Bongo</name>
-    <desc>Station 41-Bongo - Red Bongo 90
+    <desc>Station 41-Bongo - Net Bongo 90
 Fecha llegada a la estación Sun 17 Aug 2025 - 10:16
 Profundidad estación: 2826 metros
 Tiempo en estación:0.50 horas
@@ -862,7 +862,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.104700000" lon="-15.250000000">
     <name>40</name>
-    <desc>Station 40 - EstacionCTD 
+    <desc>Station 40 - Station CTD
 Fecha llegada a la estación Sun 17 Aug 2025 - 12:10
 Profundidad estación: 3029 metros
 Tiempo en estación:2.18 horas
@@ -872,7 +872,7 @@ Tiempo en estación:2.18 horas
 </wpt>
 <wpt lat="27.000000000" lon="-15.500700000">
     <name>39</name>
-    <desc>Station 39 - EstacionCTD 
+    <desc>Station 39 - Station CTD
 Fecha llegada a la estación Sun 17 Aug 2025 - 15:45
 Profundidad estación: 3246 metros
 Tiempo en estación:2.30 horas
@@ -882,7 +882,7 @@ Tiempo en estación:2.30 horas
 </wpt>
 <wpt lat="27.000000000" lon="-15.500700000">
     <name>39-WP2</name>
-    <desc>Station 39-WP2 - Red WP2     
+    <desc>Station 39-WP2 - Net WP2     
 Fecha llegada a la estación Sun 17 Aug 2025 - 18:04
 Profundidad estación: 3246 metros
 Tiempo en estación:0.50 horas
@@ -892,7 +892,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-15.500700000">
     <name>39-Bongo</name>
-    <desc>Station 39-Bongo - Red Bongo 90
+    <desc>Station 39-Bongo - Net Bongo 90
 Fecha llegada a la estación Sun 17 Aug 2025 - 18:34
 Profundidad estación: 3246 metros
 Tiempo en estación:0.50 horas
@@ -902,7 +902,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-15.834700000">
     <name>38</name>
-    <desc>Station 38 - EstacionCTD 
+    <desc>Station 38 - Station CTD
 Fecha llegada a la estación Sun 17 Aug 2025 - 20:46
 Profundidad estación: 3392 metros
 Tiempo en estación:2.38 horas
@@ -912,7 +912,7 @@ Tiempo en estación:2.38 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.197900000">
     <name>37</name>
-    <desc>Station 37 - EstacionCTD 
+    <desc>Station 37 - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 01:00
 Profundidad estación: 3502 metros
 Tiempo en estación:2.45 horas
@@ -922,7 +922,7 @@ Tiempo en estación:2.45 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.197900000">
     <name>37-WP2</name>
-    <desc>Station 37-WP2 - Red WP2     
+    <desc>Station 37-WP2 - Net WP2     
 Fecha llegada a la estación Mon 18 Aug 2025 - 03:26
 Profundidad estación: 3502 metros
 Tiempo en estación:0.50 horas
@@ -932,7 +932,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.197900000">
     <name>37-Bongo</name>
-    <desc>Station 37-Bongo - Red Bongo 90
+    <desc>Station 37-Bongo - Net Bongo 90
 Fecha llegada a la estación Mon 18 Aug 2025 - 03:56
 Profundidad estación: 3502 metros
 Tiempo en estación:0.50 horas
@@ -942,7 +942,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.568300000">
     <name>36</name>
-    <desc>Station 36 - EstacionCTD 
+    <desc>Station 36 - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 06:20
 Profundidad estación: 3589 metros
 Tiempo en estación:2.49 horas
@@ -952,7 +952,7 @@ Tiempo en estación:2.49 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.568300000">
     <name>36B</name>
-    <desc>Station 36B - EstacionCTD 
+    <desc>Station 36B - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 08:49
 Profundidad estación: 3589 metros
 Tiempo en estación:2.49 horas
@@ -962,7 +962,7 @@ Tiempo en estación:2.49 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.568300000">
     <name>36-Avani</name>
-    <desc>Station 36-Avani - Red Avani   
+    <desc>Station 36-Avani - Net Avani   
 Fecha llegada a la estación Mon 18 Aug 2025 - 11:19
 Profundidad estación: 3589 metros
 Tiempo en estación:0.50 horas
@@ -972,7 +972,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.913600000">
     <name>35</name>
-    <desc>Station 35 - EstacionCTD 
+    <desc>Station 35 - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 13:34
 Profundidad estación: 3638 metros
 Tiempo en estación:2.52 horas
@@ -982,7 +982,7 @@ Tiempo en estación:2.52 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.913600000">
     <name>35-WP2</name>
-    <desc>Station 35-WP2 - Red WP2     
+    <desc>Station 35-WP2 - Net WP2     
 Fecha llegada a la estación Mon 18 Aug 2025 - 16:06
 Profundidad estación: 3638 metros
 Tiempo en estación:0.50 horas
@@ -992,7 +992,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-16.913600000">
     <name>35-Bongo</name>
-    <desc>Station 35-Bongo - Red Bongo 90
+    <desc>Station 35-Bongo - Net Bongo 90
 Fecha llegada a la estación Mon 18 Aug 2025 - 16:36
 Profundidad estación: 3638 metros
 Tiempo en estación:0.50 horas
@@ -1002,7 +1002,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-17.286200000">
     <name>34</name>
-    <desc>Station 34 - EstacionCTD 
+    <desc>Station 34 - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 18:59
 Profundidad estación: 3681 metros
 Tiempo en estación:2.55 horas
@@ -1012,7 +1012,7 @@ Tiempo en estación:2.55 horas
 </wpt>
 <wpt lat="27.000000000" lon="-17.654300000">
     <name>33</name>
-    <desc>Station 33 - EstacionCTD 
+    <desc>Station 33 - Station CTD
 Fecha llegada a la estación Mon 18 Aug 2025 - 23:25
 Profundidad estación: 3704 metros
 Tiempo en estación:2.56 horas
@@ -1022,7 +1022,7 @@ Tiempo en estación:2.56 horas
 </wpt>
 <wpt lat="27.000000000" lon="-17.654300000">
     <name>33-WP2</name>
-    <desc>Station 33-WP2 - Red WP2     
+    <desc>Station 33-WP2 - Net WP2     
 Fecha llegada a la estación Tue 19 Aug 2025 - 01:58
 Profundidad estación: 3704 metros
 Tiempo en estación:0.50 horas
@@ -1032,7 +1032,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-17.654300000">
     <name>33-Bongo</name>
-    <desc>Station 33-Bongo - Red Bongo 90
+    <desc>Station 33-Bongo - Net Bongo 90
 Fecha llegada a la estación Tue 19 Aug 2025 - 02:28
 Profundidad estación: 3704 metros
 Tiempo en estación:0.50 horas
@@ -1042,7 +1042,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-17.654300000">
     <name>33-Avani</name>
-    <desc>Station 33-Avani - Red Avani   
+    <desc>Station 33-Avani - Net Avani   
 Fecha llegada a la estación Tue 19 Aug 2025 - 02:58
 Profundidad estación: 3704 metros
 Tiempo en estación:0.50 horas
@@ -1052,7 +1052,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.002500000">
     <name>32</name>
-    <desc>Station 32 - EstacionCTD 
+    <desc>Station 32 - Station CTD
 Fecha llegada a la estación Tue 19 Aug 2025 - 05:14
 Profundidad estación: 3748 metros
 Tiempo en estación:2.58 horas
@@ -1062,7 +1062,7 @@ Tiempo en estación:2.58 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.242500000">
     <name>31</name>
-    <desc>Station 31 - EstacionCTD 
+    <desc>Station 31 - Station CTD
 Fecha llegada a la estación Tue 19 Aug 2025 - 09:03
 Profundidad estación: 3778 metros
 Tiempo en estación:2.60 horas
@@ -1072,7 +1072,7 @@ Tiempo en estación:2.60 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.242500000">
     <name>31-WP2</name>
-    <desc>Station 31-WP2 - Red WP2     
+    <desc>Station 31-WP2 - Net WP2     
 Fecha llegada a la estación Tue 19 Aug 2025 - 11:39
 Profundidad estación: 3778 metros
 Tiempo en estación:0.50 horas
@@ -1082,7 +1082,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.242500000">
     <name>31-Bongo</name>
-    <desc>Station 31-Bongo - Red Bongo 90
+    <desc>Station 31-Bongo - Net Bongo 90
 Fecha llegada a la estación Tue 19 Aug 2025 - 12:09
 Profundidad estación: 3778 metros
 Tiempo en estación:0.50 horas
@@ -1092,7 +1092,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.496300000">
     <name>30</name>
-    <desc>Station 30 - EstacionCTD 
+    <desc>Station 30 - Station CTD
 Fecha llegada a la estación Tue 19 Aug 2025 - 13:56
 Profundidad estación: 3796 metros
 Tiempo en estación:2.61 horas
@@ -1102,7 +1102,7 @@ Tiempo en estación:2.61 horas
 </wpt>
 <wpt lat="27.000000000" lon="-18.496300000">
     <name>30-Avani</name>
-    <desc>Station 30-Avani - Red Avani   
+    <desc>Station 30-Avani - Net Avani   
 Fecha llegada a la estación Tue 19 Aug 2025 - 16:33
 Profundidad estación: 3796 metros
 Tiempo en estación:0.50 horas
@@ -1112,7 +1112,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.359000000" lon="-18.496300000">
     <name>29</name>
-    <desc>Station 29 - EstacionCTD 
+    <desc>Station 29 - Station CTD
 Fecha llegada a la estación Tue 19 Aug 2025 - 19:06
 Profundidad estación: 3880 metros
 Tiempo en estación:2.66 horas
@@ -1122,7 +1122,7 @@ Tiempo en estación:2.66 horas
 </wpt>
 <wpt lat="27.359000000" lon="-18.496300000">
     <name>29-WP2</name>
-    <desc>Station 29-WP2 - Red WP2     
+    <desc>Station 29-WP2 - Net WP2     
 Fecha llegada a la estación Tue 19 Aug 2025 - 21:45
 Profundidad estación: 3880 metros
 Tiempo en estación:0.50 horas
@@ -1132,7 +1132,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.359000000" lon="-18.496300000">
     <name>29-Bongo</name>
-    <desc>Station 29-Bongo - Red Bongo 90
+    <desc>Station 29-Bongo - Net Bongo 90
 Fecha llegada a la estación Tue 19 Aug 2025 - 22:15
 Profundidad estación: 3880 metros
 Tiempo en estación:0.50 horas
@@ -1142,7 +1142,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.719000000" lon="-18.496300000">
     <name>28</name>
-    <desc>Station 28 - EstacionCTD 
+    <desc>Station 28 - Station CTD
 Fecha llegada a la estación Wed 20 Aug 2025 - 00:49
 Profundidad estación: 3920 metros
 Tiempo en estación:2.68 horas
@@ -1152,7 +1152,7 @@ Tiempo en estación:2.68 horas
 </wpt>
 <wpt lat="27.719000000" lon="-18.496300000">
     <name>28-WP2</name>
-    <desc>Station 28-WP2 - Red WP2     
+    <desc>Station 28-WP2 - Net WP2     
 Fecha llegada a la estación Wed 20 Aug 2025 - 03:29
 Profundidad estación: 3920 metros
 Tiempo en estación:0.50 horas
@@ -1162,7 +1162,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="27.719000000" lon="-18.496300000">
     <name>28-Bongo</name>
-    <desc>Station 28-Bongo - Red Bongo 90
+    <desc>Station 28-Bongo - Net Bongo 90
 Fecha llegada a la estación Wed 20 Aug 2025 - 03:59
 Profundidad estación: 3920 metros
 Tiempo en estación:0.50 horas
@@ -1172,7 +1172,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.078000000" lon="-18.496300000">
     <name>27</name>
-    <desc>Station 27 - EstacionCTD 
+    <desc>Station 27 - Station CTD
 Fecha llegada a la estación Wed 20 Aug 2025 - 06:32
 Profundidad estación: 3978 metros
 Tiempo en estación:2.71 horas
@@ -1182,7 +1182,7 @@ Tiempo en estación:2.71 horas
 </wpt>
 <wpt lat="28.078000000" lon="-18.496300000">
     <name>27-WP2</name>
-    <desc>Station 27-WP2 - Red WP2     
+    <desc>Station 27-WP2 - Net WP2     
 Fecha llegada a la estación Wed 20 Aug 2025 - 09:15
 Profundidad estación: 3978 metros
 Tiempo en estación:0.50 horas
@@ -1192,7 +1192,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.078000000" lon="-18.496300000">
     <name>27-Bongo</name>
-    <desc>Station 27-Bongo - Red Bongo 90
+    <desc>Station 27-Bongo - Net Bongo 90
 Fecha llegada a la estación Wed 20 Aug 2025 - 09:45
 Profundidad estación: 3978 metros
 Tiempo en estación:0.50 horas
@@ -1202,7 +1202,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.438000000" lon="-18.496300000">
     <name>26</name>
-    <desc>Station 26 - EstacionCTD 
+    <desc>Station 26 - Station CTD
 Fecha llegada a la estación Wed 20 Aug 2025 - 12:18
 Profundidad estación: 4073 metros
 Tiempo en estación:2.76 horas
@@ -1212,7 +1212,7 @@ Tiempo en estación:2.76 horas
 </wpt>
 <wpt lat="28.438000000" lon="-18.496300000">
     <name>26-Avani</name>
-    <desc>Station 26-Avani - Red Avani   
+    <desc>Station 26-Avani - Net Avani   
 Fecha llegada a la estación Wed 20 Aug 2025 - 15:04
 Profundidad estación: 4073 metros
 Tiempo en estación:0.50 horas
@@ -1222,7 +1222,7 @@ Tiempo en estación:0.50 horas
 </wpt>
 <wpt lat="28.797000000" lon="-18.496300000">
     <name>25</name>
-    <desc>Station 25 - EstacionCTD 
+    <desc>Station 25 - Station CTD
 Fecha llegada a la estación Wed 20 Aug 2025 - 17:37
 Profundidad estación: 4095 metros
 Tiempo en estación:2.78 horas
@@ -1264,7 +1264,7 @@ Date 21-Aug-2025 09:13:40
 </wpt>
 <wpt lat="28.480000000" lon="-16.230000000">
     <name>Santa Cruz</name>
-    <desc>P. llegada  , 
+    <desc>Arrival port, 
  LLegada el fecha21-Aug-2025 09:47:32
 </desc> 
     <sym>circle</sym>
