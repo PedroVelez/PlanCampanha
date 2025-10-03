@@ -311,7 +311,7 @@ if Op.Ruler==1
     m_ruler([.05 .35],.95,'tickdir','out','ticklen',[.007 .007]);
 end
 
-m_usercoast(GlobalDS.filecoast,'patch',[.7 .6 .4,],'edgecolor',[.7 .6 .4,]);
+m_usercoast(GlobalDS.filecoast,'patch',[.7 .6 .4,],'edgecolor',[.7 .6 .4]);
 
 % Define color for the marks. It changes depending on the background color
 if Op.BatimetryColor==1
