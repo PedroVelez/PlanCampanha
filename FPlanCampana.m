@@ -1,8 +1,9 @@
-function DataOut=FPlanCampana(Op);
+function DataOut=FPlanCampana(Op)
 %This function compute total time of a cruise plan.
 %
 % The cruise plan is in a file named strcat('Estaciones',Op.Cruise,'.csv')
 % for example: 'EstacionesRaprocan1810.csv'.
+%
 % It will have a line for operation, with the folliwing format:
 % Name of the station;longitude in decial degrees;latitude in decimal degrees;type of operation
 % for exacmple; 24;-18.4963;29.1667;1
@@ -84,13 +85,10 @@ function DataOut=FPlanCampana(Op);
 % Op.ImagenSateliteFile='201310151405MSN19';
 %
 % Pedro Velez Belchi (IEO) - 2002
-
+% https://github.com/PedroVelez/PlanCampanha
 
 
 %% Begining
-
-fprintf('>>>>>Cruise plan for: %s \n',Op.Cruise)
-
 if isfield(Op,'BatimetryIso')==0;       Op.BatimetryIso=[-1000 -2000];end
 if isfield(Op,'BatimetryIsoLabel')==0;  Op.BatimetryIsoLabel=[1 1 1];end
 if isfield(Op,'DailyAOperation')==0;    Op.DailyAOperation=0.0;end
@@ -98,7 +96,7 @@ if isfield(Op,'DepthROV')==0;           Op.DepthROV=1500;end
 if isfield(Op,'Idioma')==0;             Op.Idioma=1;end
 if isfield(Op,'ImagenSatelite')==0;     Op.ImagenSatelite=0;end
 if isfield(Op,'Legend')==0;             Op.Legend=1;end
-if isfield(Op,'Logo')==0;               Op.Logo=1;end
+if isfield(Op,'Logo')==0;               Op.Logo=0;end
 if isfield(Op,'MaxProfCTD')==0;         Op.MaxProfCTD=0;end
 if isfield(Op,'MoorTick')==0;           Op.MoorTick=0;end
 if isfield(Op,'Plot3d')==0;             Op.Plot3d=0;end
@@ -124,8 +122,15 @@ if isfield(Op,'VelocityBC')==0;         Op.VelocityBC=50;end
 if isfield(Op,'VelocityROV')==0;        Op.VelocityROV=40;end
 if isfield(Op,'VelocityMooring')==0;    Op.VelocityMooring=55;end
 if isfield(Op,'VelocityLander')==0;     Op.VelocityLander=30;end
-
 if isfield(Op,'ZEE')==0;                Op.ZEE=0;end
+
+if Op.Idioma==1
+    fprintf('>>>>> Plan de campaña de: %s \n',Op.Cruise)
+    fprintf('      Ayuda sobre este programa en https://github.com/PedroVelez/PlanCampanha\n')
+else
+    fprintf('>>>>> Cruise plan for: %s \n',Op.Cruise)
+    fprintf('      Help about this program in https://github.com/PedroVelez/PlanCampanha\n')
+end
 
 %%
 %% Español
@@ -193,24 +198,32 @@ elseif exist(strcat('Estaciones',Op.Cruise,'.csv'),'file')>0
     StationsFile=strcat('Estaciones',Op.Cruise,'.csv');
 end
 
-fid = fopen(strcat(StationsFile));np=0;
+fid = fopen(strcat(StationsFile));
+np=0;
+nl=0;
+
 while feof(fid)==0
     str=fgetl(fid);
+    nl=nl+1;
     if ~isempty(str)
         if strcmp(str(1),'%')==0
             np=np+1;
             in=strfind(str,';');
-            PointName{np} =deblank(str(1:in(1)-1));
-            Point(np).name=deblank(str(1:in(1)-1));
-            PointLon(np)=str2double(str(in(1)+1:in(2)-1));
-            Point(np).Lon=str2double(str(in(1)+1:in(2)-1));
-            if PointLon(np)>180
-                PointLon(np)=PointLon(np)-360;
+            if length(in)==3
+                PointName{np} =deblank(str(1:in(1)-1));
+                Point(np).name=deblank(str(1:in(1)-1));
+                PointLon(np)=str2double(str(in(1)+1:in(2)-1));
+                Point(np).Lon=str2double(str(in(1)+1:in(2)-1));
+                if PointLon(np)>180
+                    PointLon(np)=PointLon(np)-360;
+                end
+                PointLat(np)=str2double(str(in(2)+1:in(3)-1));
+                Point(np).Lat=str2double(str(in(2)+1:in(3)-1));
+                PointID(np)=str2double(str(in(3)+1:end));
+                Point(np).ID=str2double(str(in(3)+1:end));
+            else
+                error('!!!!!  Error with format with %s in line %d \n',str,nl)
             end
-            PointLat(np)=str2double(str(in(2)+1:in(3)-1));
-            Point(np).Lat=str2double(str(in(2)+1:in(3)-1));
-            PointID(np)=str2double(str(in(3)+1:end));
-            Point(np).ID=str2double(str(in(3)+1:end));
         end
     end
 end
@@ -319,7 +332,6 @@ if Op.BatimetryColor==1
     mec='k'; %Marker edge color
     ctrack=rgb('gray');
 elseif Op.ImagenSatelite>0
-    %mfc=[0.85 0.85 0.85]; %Marker Face Color
     mfc='y';
     mec='r'; %Marker edge color
     ctrack=[0.85,0.85,0.85];
@@ -330,30 +342,33 @@ else
 end
 
 %Markers size
-msports= 8;
+msports= 10; %Markers size ports
 msests = 8; %Markers size stations
 msmo   = 10;
-
 
 %% Departing and arrival ports
 ihp=1;
 
-for ii=1:length(PointLon)
-    if PointID(ii)==10
-        hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize', ...
-            msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
-        ihp=ihp+1;
-    elseif PointID(ii)==9
-        hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize',...
-            msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
-        ihp=ihp+1;
+if length(find(PointID==10))==1 & length(find(PointID==9))==1
+    for ii=1:length(PointLon)
+        if PointID(ii)==10
+            hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','s','markersize', ...
+                msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
+            ihp=ihp+1;
+        elseif PointID(ii)==9
+            hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','s','markersize',...
+                msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
+            ihp=ihp+1;
+        end
     end
-end
+else
+    error('!!!!!  Falta puerto de salida o llegada')
 
+end
 %% Add stations
 for ii=1:length(PointLon)
     estCTDnombre=str2double(PointName{ii});
-    if PointID(ii)==1 || PointID(ii)==11 || PointID(ii)==12 || PointID(ii)==13 || PointID(ii)==14 || PointID(ii)==15 || PointID(ii)<0
+    if PointID(ii)==1 || PointID(ii)==11 || PointID(ii)==12 || PointID(ii)==13 || PointID(ii)==14 || PointID(ii)==15 || PointID(ii)==16 || PointID(ii)<0
         if any(estCTDnombre==Op.StaSpecMarks1)
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize',msests+4, ...
                 'MarkerEdgeColor',Op.StaSpecMarks1Color,'MarkerFaceColor',Op.StaSpecMarks1Color,'linestyle','none');
@@ -380,10 +395,12 @@ for ii=1:length(PointLon)
     elseif PointID(ii)==2
         if Op.VesselTrack==1
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii), ...
-                'marker','.','markersize',2,'MarkerEdgeColor',mec,'MarkerFaceColor',mfc);
+                'marker','*','markersize',2,'MarkerEdgeColor',mec,'MarkerFaceColor',mfc);
         end
     end
 end
+
+
 
 %% Add stations moorigns / landers
 for ii=1:length(PointLon)
@@ -414,24 +431,25 @@ for ii=1:length(PointLon)
     end
 end
 
+
 %% Add Label the stations
 DisTc=(Op.lat_max-Op.lat_min)/22;
+
+
 if Op.StaTicks>=1
-    for ii=1:length(PointID)
-        estCTDnombre=str2double(PointName{ii});
-        if ceil(estCTDnombre/Op.StaTicks)==estCTDnombre/Op.StaTicks
-            %If the station is included in the Op.StaSpecMarks1 list it is
-            %not labelled here
+    indiceLabel=find(PointID==1);
+    for ii=1:Op.StaTicks:length(indiceLabel)
+            %If the station is included in the Op.StaSpecMarks1 list it is not labelled here
             if Op.StaSpecMarks1Ticks == 1
+                estCTDnombre=str2double(PointName{indiceLabel(ii)});
                 if ~any(estCTDnombre==Op.StaSpecMarks1)
-                    m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+DisTc,deblank(PointName{ii}), ...
+                    m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
                         'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
                 end
             else
-                m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+DisTc,deblank(PointName{ii}), ...
+                m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
                     'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
             end
-        end
     end
 end
 
@@ -445,10 +463,21 @@ if Op.MoorTick == 1
         end
     end
 end
+
 if Op.StaSpecMarks1Ticks == 1
     for ii=1:length(PointID)
         estCTDnombre=str2double(PointName{ii});
         if any(estCTDnombre==Op.StaSpecMarks1)
+            m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+0.20,deblank(PointName{ii}), ...
+                'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
+        end
+    end
+end
+
+if Op.StaSpecMarks2Ticks == 1
+    for ii=1:length(PointID)
+        estCTDnombre=str2double(PointName{ii});
+        if any(estCTDnombre==Op.StaSpecMarks2)
             m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+0.20,deblank(PointName{ii}), ...
                 'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
         end
@@ -498,7 +527,7 @@ elseif Op.Idioma==1
 end
 
 
-%Departing port
+% Departing port
 ii=1;
 TimeAtPoint(ii)=0;
 DateAfterPoint(ii)=Op.DepartingDate;
@@ -1223,7 +1252,7 @@ if Op.Idioma==1
     fprintf(fid,'Hora         - Hora llegada a la estación.\n');
     fprintf(fid,'horasT       - Horas de trabajo en la estación.\n');
     fprintf(fid,'Dia          - Dia de campaña (La campaña comienza el día 1).\n');
-    fprintf(fid,'Naveg        - Navegación a la siguiente estación en millas nauticas.\n');
+    fprintf(fid,'Naveg        - Navegación a la siguiente estación en millas náuticas.\n');
 elseif Op.Idioma==2
     fprintf(fid,'Station     - Name of the station.\n');
     fprintf(fid,'Operation   - Operation code (depart port, waypoint, CTD, ,...) for the stations.\n');
@@ -1238,7 +1267,15 @@ elseif Op.Idioma==2
     fprintf(fid,'Day         - Cruise day (the cruise begins in day 1).\n');
     fprintf(fid,'Naveg       - Navegation to the next station in nautical miles.\n');
 end
-
+fprintf(fid,'------------------------------------------------------------------------------------\n');
+if Op.Idioma==1
+    fprintf(fid,'      Ayuda sobre este programa en https://github.com/PedroVelez/PlanCampanha\n');
+    fprintf('      Ayuda sobre este programa en https://github.com/PedroVelez/PlanCampanha\n');
+else
+    fprintf(fid,'      Help about this program in https://github.com/PedroVelez/PlanCampanha\n');
+    fprintf('      Help about this program in https://github.com/PedroVelez/PlanCampanha\n');
+end
+fprintf(fid,'------------------------------------------------------------------------------------\n');
 fclose(fid);
 
 %% Output data
@@ -1343,6 +1380,13 @@ end
 
 %% Create figures
 if isfield(Op,'OutputFigures')==1
+
+% Backward compatibility
+if length(Op.OutputFigures)==2
+    Op.OutputFigures=2;
+end
+
+
     orient(1,'landscape')
     set(1,'units','normalized','outerposition',[0.2 0.2 .75 .75])
 
@@ -1361,10 +1405,6 @@ if isfield(Op,'OutputFigures')==1
         print(1, '-dpng',strcat('PlanCampanha',Op.Cruise,'3D.png'))
 
     end
-    % Backward compatibility
-    %if length(Op.OutputFigures)==2
-    %    CreaFigura(1,strcat('PlanCampanha',Op.Cruise),Op.OutputFigures);
-    %end
 end
 
 
