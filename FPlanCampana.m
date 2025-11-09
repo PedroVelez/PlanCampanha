@@ -67,13 +67,13 @@ function DataOut=FPlanCampana(Op)
 % Op.ZEE=1;                 %[1/0] to add ZEE lines
 % Op.VesselTrack=1;         %[1/0] to add vessel track. 2 for track with time
 %
-% Op.StaTicks=10;           %Cada cuanto se etiquetan las stations
-% Op.StaSpecMarks1=[];      %Stationes especiales a marcar
+% Op.StaTicks=10;           %Cada cuanto se etiquetan las stations (only CTD)
+% Op.StaSpecMarks1=[];      %CTD Stationes especiales a marcar
 % Op.StaSpecMarks1Color='r';
 % Op.StaSpecMarks1Ticks=0;  %Flag to label special stations
 % Op.Subtitle=1;            %[0/1/2] for [no/short/long] subtitle
 %
-% Op.MoorTick=1;            %A ñade nombre de fondeo
+% Op.MoorTick=1;            %Añade nombre de fondeo
 %
 % Op.OutputKml=1;
 % Op.OutputMat=1;
@@ -96,6 +96,7 @@ if isfield(Op,'DepthROV')==0;           Op.DepthROV=1500;end
 if isfield(Op,'Idioma')==0;             Op.Idioma=1;end
 if isfield(Op,'ImagenSatelite')==0;     Op.ImagenSatelite=0;end
 if isfield(Op,'Legend')==0;             Op.Legend=1;end
+if isfield(Op,'LonEConvMap')==0;        Op.LonEConvMap=0;end
 if isfield(Op,'Logo')==0;               Op.Logo=0;end
 if isfield(Op,'MaxProfCTD')==0;         Op.MaxProfCTD=0;end
 if isfield(Op,'MoorTick')==0;           Op.MoorTick=0;end
@@ -196,7 +197,10 @@ elseif exist(strcat('Estaciones',Op.Cruise,'.txt'),'file')>0
     StationsFile=strcat('Estaciones',Op.Cruise,'.txt');
 elseif exist(strcat('Estaciones',Op.Cruise,'.csv'),'file')>0
     StationsFile=strcat('Estaciones',Op.Cruise,'.csv');
+else
+    error('!!!!!  Falta fichero de estaciones con mombre Estaciones.[dat/txt/csv]')
 end
+
 
 fid = fopen(strcat(StationsFile));
 np=0;
@@ -262,8 +266,9 @@ latPm=(abs(PointLat)-abs(fix(PointLat)))*60;
 
 %% Make figure
 figure(1)
-m_proj(Op.Proj, ...
+hProj=m_proj(Op.Proj, ...
     'long',[Op.lon_min Op.lon_max],'lat',[Op.lat_min Op.lat_max]);hold on
+hProAxis=gca;
 
 if Op.ImagenSatelite==1 %Anado imagen de satelite si hubiera
     D=AddImageSatelite(Op.ImagenSateliteType,Op.ImagenSateliteDayi,GlobalDS);
@@ -346,32 +351,32 @@ msports= 10; %Markers size ports
 msests = 8; %Markers size stations
 msmo   = 10;
 
-%% Departing and arrival ports
+%% Add statios
+% Departing and arrival ports
 ihp=1;
-
 if length(find(PointID==10))==1 & length(find(PointID==9))==1
     for ii=1:length(PointLon)
         if PointID(ii)==10
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','s','markersize', ...
-                msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
+                msports,'MarkerEdgeColor','k','MarkerFaceColor','w','clip','on');
             ihp=ihp+1;
         elseif PointID(ii)==9
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','s','markersize',...
-                msports,'MarkerEdgeColor','k','MarkerFaceColor','w');
+                msports,'MarkerEdgeColor','k','MarkerFaceColor','w','clip','on');
             ihp=ihp+1;
         end
     end
 else
     error('!!!!!  Falta puerto de salida o llegada')
-
 end
-%% Add stations
+
+% CTD and other stations
 for ii=1:length(PointLon)
     estCTDnombre=str2double(PointName{ii});
     if PointID(ii)==1 || PointID(ii)==11 || PointID(ii)==12 || PointID(ii)==13 || PointID(ii)==14 || PointID(ii)==15 || PointID(ii)==16 || PointID(ii)<0
         if any(estCTDnombre==Op.StaSpecMarks1)
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize',msests+4, ...
-                'MarkerEdgeColor',Op.StaSpecMarks1Color,'MarkerFaceColor',Op.StaSpecMarks1Color,'linestyle','none');
+                'MarkerEdgeColor',Op.StaSpecMarks1Color,'MarkerFaceColor',Op.StaSpecMarks1Color,'clip','on','linestyle','none');
             if exist('hpstaSpec1','var') == 0
                 hpstaSpec1=hp(ihp);
             end
@@ -379,14 +384,14 @@ for ii=1:length(PointLon)
         end
         if any(estCTDnombre==Op.StaSpecMarks2)
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'s','markersize',msests+8, ...
-                'MarkerEdgeColor',Op.StaSpecMarks2Color,'linestyle','none');
+                'MarkerEdgeColor',Op.StaSpecMarks2Color,'clip','on','linestyle','none');
             if exist('hpstaSpec2','var') == 0
                 hpstaSpec2=hp(ihp);
             end
             ihp=ihp+1;
         end
         hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','o','markersize',msests, ...
-            'MarkerEdgeColor',mec,'MarkerFaceColor',mfc,'linestyle','none');
+            'MarkerEdgeColor',mec,'MarkerFaceColor',mfc,'clip','on','linestyle','none');
         if exist('hpstaSpec1','var') == 0
             hpsta=hp(ihp);
         end
@@ -395,96 +400,120 @@ for ii=1:length(PointLon)
     elseif PointID(ii)==2
         if Op.VesselTrack==1
             hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii), ...
-                'marker','*','markersize',2,'MarkerEdgeColor',mec,'MarkerFaceColor',mfc);
+                'marker','*','markersize',3,'MarkerEdgeColor',mec,'MarkerFaceColor',mfc, ...
+                'clip','on');
         end
     end
 end
 
-
-
-%% Add stations moorigns / landers
+% Add stations moorigns / landers
 for ii=1:length(PointLon)
     if PointID(ii)==3
         hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','v', ...
-            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none');
+            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none','clip','on');
         if exist('hpDLander','var') == 0
             hpDLander=hp(ihp);
         end
     elseif PointID(ii)==4
         hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','^', ...
-            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none');
+            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none','clip','on');
         if exist('hpRLander','var') == 0
             hpRLander=hp(ihp);
         end
     elseif PointID(ii)==7
         hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii),'marker','v', ...
-            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none');
+            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none','clip','on');
         if exist('hpDMoor','var') == 0
             hpDMoor=hp(ihp);
         end
     elseif PointID(ii)==8
         hp(ihp)=m_plot(PointLon(ii)+Op.LonEConvMap,PointLat(ii), 'marker','^',...
-            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none');
+            'markersize',msmo,'MarkerEdgeColor','k','MarkerFaceColor','y','linestyle','none','clip','on');
         if exist('hpRMoor','var') == 0
             hpRMoor=hp(ihp);
         end
     end
 end
 
-
-%% Add Label the stations
-DisTc=(Op.lat_max-Op.lat_min)/22;
-
-
-if Op.StaTicks>=1
-    indiceLabel=find(PointID==1);
-    for ii=1:Op.StaTicks:length(indiceLabel)
-            %If the station is included in the Op.StaSpecMarks1 list it is not labelled here
-            if Op.StaSpecMarks1Ticks == 1
-                estCTDnombre=str2double(PointName{indiceLabel(ii)});
-                if ~any(estCTDnombre==Op.StaSpecMarks1)
-                    m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
-                        'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
-                end
-            else
-                m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
-                    'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
+%% Add ZEEs
+if Op.ZEE==1
+    fprintf('      Adding ZEEs\n');
+    load('Globales.mat','GlobalSU')
+    %fileZEE=strcat(GlobalSU.DatPath,'/Costa/WorldEEZ/eez_v10.shp');
+    fileZEE=strcat(GlobalSU.DatPath,'/Costa/WorldEEZ/eez_v10.mat');
+    if exist(fileZEE,'file')==2
+        %S=shaperead(fileZEE);
+        load(fileZEE)
+        YQ=[Op.lat_max Op.lat_max Op.lat_min Op.lat_min Op.lat_max];
+        XQ=[Op.lon_min Op.lon_max Op.lon_max Op.lon_min Op.lon_min];
+        for i1=1:length(S)
+            if any(inpolygon(S(i1).X,S(i1).Y,XQ,YQ))
+            m_plot(S(i1).X+Op.LonEConvMap,S(i1).Y,'-','color',[0.25 0.25 0.25],'linewidth',1.5,'clip','on');hold on
             end
+        end
+    else
+        fprintf(    '       There is not .shp file in GlobalSU.DatPath/Costa/WorldEEZ/eez_v10.shp');
     end
 end
 
+
+%% Add Labels to the stations
+DisTc=(Op.lat_max-Op.lat_min)/22;
+
+if Op.StaTicks>=1
+    indiceLabel=find(PointID==1 | PointID<0 );
+    for ii=1:Op.StaTicks:length(indiceLabel)
+        %If the station is included in the Op.StaSpecMarks1 list it is not labelled here
+        if Op.StaSpecMarks1Ticks == 1
+            estCTDnombre=str2double(PointName{indiceLabel(ii)});
+            if ~any(estCTDnombre==Op.StaSpecMarks1)
+                m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
+                    'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top','clip','on');
+            end
+        else
+            m_text(PointLon(indiceLabel(ii))+Op.LonEConvMap,PointLat(indiceLabel(ii))+DisTc,deblank(PointName{indiceLabel(ii)}), ...
+                'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top','clip','on');
+        end
+    end
+end
+
+% Moorings
 if Op.MoorTick == 1
     DisTcM=(Op.lat_max-Op.lat_min)/15;
     for ii=1:length(PointID)
         if PointID(ii)==3 || PointID(ii)==4 || PointID(ii)==7 || PointID(ii)==8
             m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+DisTcM,deblank(PointName{ii}), ...
-                'color',mec,'backgroundcolor','y','Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
-
+                'color',mec,'clip','on','backgroundcolor','y','Fontsize',11, ...
+                'HorizontalAlignment','center','VerticalAlignment','top');
         end
     end
 end
 
+% Spetial marks1
 if Op.StaSpecMarks1Ticks == 1
     for ii=1:length(PointID)
         estCTDnombre=str2double(PointName{ii});
         if any(estCTDnombre==Op.StaSpecMarks1)
             m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+0.20,deblank(PointName{ii}), ...
-                'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
+                'color',mec,'clip','on','Fontsize',11, ... 
+                'HorizontalAlignment','center','VerticalAlignment','top');
         end
     end
 end
 
+% Spetial marks2
 if Op.StaSpecMarks2Ticks == 1
     for ii=1:length(PointID)
         estCTDnombre=str2double(PointName{ii});
         if any(estCTDnombre==Op.StaSpecMarks2)
             m_text(PointLon(ii)+Op.LonEConvMap,PointLat(ii)+0.20,deblank(PointName{ii}), ...
-                'color',mec,'Fontsize',11,'HorizontalAlignment','center','VerticalAlignment','top');
+                'color',mec,'clip','on','Fontsize',11, ...
+                'HorizontalAlignment','center','VerticalAlignment','top');
         end
     end
 end
 
-%% Titulos
+%% Add title
 if Op.ImagenSatelite>0 && isfield(Op,'ImagenSateliteTitulo')
     titulo=sprintf('%s %s',Op.Cruise,Op.ImagenSateliteTitulo);
 else
@@ -523,9 +552,7 @@ elseif Op.Idioma==1
     fprintf(fid,'Estación           ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llegada  ;Hora ;horasT;Dia ;Naveg\n');
     fprintf(    '------------------------------------------------------------------------------------------------------\n');
     fprintf(    'Estación           ;Operación   ;LonG;LonM  ;LatG;LatM  ;Pro-m;Fecha llegada  ;Hora ;horasT;Dia ;Naveg\n');
-
 end
-
 
 % Departing port
 ii=1;
@@ -800,7 +827,6 @@ for ii=2:length(PointLon)
         fprintf(fid,StrOut);
         fprintf(    StrOut);
 
-
         %Operations by time
     elseif (PointID(ii)<0)
         StationNumber=StationNumber+1;
@@ -810,7 +836,7 @@ for ii=2:length(PointLon)
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
         DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
 
-        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{11}, ...
+        KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{20}, ...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'), ...
             PointDepth(ii),TimeAtPoint(ii),DistanciaPP(ii));
         KmlNombrePunto{ii} =PointName{ii};
@@ -1006,34 +1032,18 @@ for ii=2:length(PointLon)
         fprintf(fid,StrOut);
         fprintf(    StrOut);
     end
-
 end
 
 % Compute total time and distance
 TotalDistance=sum(DistanciaPP);%Distancia total recorrida
 TotalTimeStations=sum(TimeAtPoint);%Tiempo total en stations en horas
 
-%% Vessel track
+%% Add Vessel track
 if Op.VesselTrack==1
-    m_plot(PointLon+Op.LonEConvMap,PointLat,'--','color',ctrack,'linewidth',1)
+    m_plot(PointLon+Op.LonEConvMap,PointLat,'--','color',ctrack,'linewidth',1,'clip','on')
 elseif Op.VesselTrack==2
     m_track(PointLon+Op.LonEConvMap,PointLat,DateAfterPoint, ...
         'ticks',24*60,'times',-1,'dates',-1,'orien','upright','datef',24)
-end
-
-
-%% Añadir ZEEs
-if Op.ZEE==1
-    fprintf(    'Adding ZEEs');
-    load('Globales.mat','GlobalSU')
-    if exist(strcat(GlobalSU.DatPath,'/Costa/WorldEEZ/eez_v10.shp'),'file')==2
-        S=shaperead(strcat(GlobalSU.DatPath,'/Costa/WorldEEZ/eez_v10.shp'));
-        for i1=1:length(S)
-            m_plot(S(i1).X+Op.LonEConvMap,S(i1).Y,'-','color',[0.75 0.75 0.75]);hold on
-        end
-    else
-        fprintf(    'There is not .shp file in GlobalSU.DatPath/Costa/WorldEEZ/eez_v10.shp');
-    end
 end
 
 %% Add subtitle
@@ -1072,13 +1082,12 @@ else
     xlabel(Subtitulo);
 end
 
-
 %% Add Logo
 if Op.Logo==1
     Logo;
 end
 
-%% legenda
+%% Add legend
 if Op.Legend==1
     ileg=1;
     if exist('hpsta','var')
@@ -1116,11 +1125,12 @@ if Op.Legend==1
     hpLegend=legend(hpsL, textsL);
     hpLegend.FontSize=12;
 end
-Dataout.hpLegend=hpLegend;
 
+if Op.Legend==1
+    Dataout.hpLegend=hpLegend;
+end
 
 %% Summary
-
 fprintf(fid,'\n------------------------------------------------------------------------------------------------------\n');
 fprintf(    '\n------------------------------------------------------------------------------------------------------\n');
 
@@ -1203,7 +1213,6 @@ elseif Op.Idioma==2
     fprintf(fid,  'In each CTD station %3.2f h has been added for positioning.\n',Op.TStation);
     fprintf(      'In each CTD station %3.2f h has been added for positioning.\n',Op.TStation);
 end
-
 
 if ~isempty(indiceMOOR)
     if Op.Idioma==1
@@ -1290,23 +1299,40 @@ DataOut.hp=hp;
 DataOut.DiaCampana=DiaCampana;
 DataOut.DateAtPoint=DateAfterPoint-TimeAtPoint/24;
 
-
-%% Formato Kml (Google earth)
+% Format Kml (Google earth)
 if isfield(Op,'OutputKml')==1
     if Op.OutputKml==1
         imagesdir=which(mfilename);
         iconfilename=strcat(imagesdir(1:end-14),'Images/','circle','_','b','.png');
         if exist(iconfilename,'file')
-            kmlwritepoint(strcat('PlanCampanha',Op.Cruise),PointLat,PointLon,'Name', ...
+            kmlwritepoint('Temp1.kml',PointLat,PointLon,'Name', ...
                 KmlNombrePunto,'Description',KmlDescripcionPunto,'Icon',iconfilename,'IconScale',.5)
         else
-            kmlwritepoint(strcat('PlanCampanha',Op.Cruise),PointLat,PointLon,'Name', ...
-                KmlNombrePunto,'Description',KmlDescripcionPunto)
+            kmlwritepoint('Temp1.kml',PointLat,PointLon,'Name', ...
+                KmlNombrePunto,'Description',KmlDescripcionPunto,'IconScale',.5)
         end
+
+        kmlwriteline('Temp2.kml', PointLat,PointLon,'Name', 'Cruise Track', ... 
+            'Color','white', 'LineWidth', 2);
+
+        % Unirlos en un solo archivo (mezcla los contenidos XML)
+        fid1 = fopen('Temp1.kml','r');
+        fid2 = fopen('Temp2.kml','r');
+        fidOut = fopen(strcat('PlanCampanha',Op.Cruise,'.kml'),'w');
+        % Copiar todo del primero hasta antes del cierre </Document>
+        text1 = fileread('Temp1.kml');
+        text1 = regexprep(text1, '</Document>.*</kml>', '');
+        text2 = fileread('Temp2.kml');
+        text2 = regexprep(text2, '.*?<Document>', '');
+        text2 = regexprep(text2, 'Temp2', strcat('PlanCampanha',Op.Cruise));
+        fprintf(fidOut, '%s%s', text1, text2);
+        fclose(fid1); fclose(fid2); fclose(fidOut);
+        delete('Temp1.kml');
+        delete('Temp2.kml');
     end
 end
 
-%% GPX
+% GPX
 if isfield(Op,'OutputGPX')==1
     fid = fopen(strcat('PlanCampanha',Op.Cruise,'.gpx'),'w');
     fprintf(fid,'<?xml version="1.0"?>\n');
@@ -1322,6 +1348,7 @@ if isfield(Op,'OutputGPX')==1
     fprintf(fid, '</gpx>\n');
 end
 
+% CSV
 if isfield(Op,'OutputMFP')==1
     fid = fopen(strcat('PlanCampanha',Op.Cruise,'.csv'),'w');
     fprintf(fid, 'Station Type;Name;Latitude;Longitude\n');
@@ -1339,7 +1366,7 @@ if isfield(Op,'OutputMFP')==1
 end
 
 
-%% Save mat file
+% Save mat file
 if Op.Plot3d==1
     figure
     surf(BAT.batylon,BAT.batylat,BAT.elevations);hold on
@@ -1361,7 +1388,6 @@ if Op.Plot3d==1
         Op.BatimetryIso=sort(Op.BatimetryIso,'descend');
         cbiso=linspace(0.5,1,length(Op.BatimetryIso));
         for iiso=1:length(Op.BatimetryIso)
-
             [C,h]=contour3(BAT.batylon+Op.LonEConvMap,BAT.batylat,BAT.elevations,...
                 [Op.BatimetryIso(iiso) Op.BatimetryIso(iiso)],'color',cbiso(iiso)*[1 1 1]);
             if Op.BatimetryIsoLabel(iiso)==1
@@ -1380,12 +1406,10 @@ end
 
 %% Create figures
 if isfield(Op,'OutputFigures')==1
-
-% Backward compatibility
-if length(Op.OutputFigures)==2
-    Op.OutputFigures=2;
-end
-
+    % Backward compatibility
+    if length(Op.OutputFigures)==2
+        Op.OutputFigures=2;
+    end
 
     orient(1,'landscape')
     set(1,'units','normalized','outerposition',[0.2 0.2 .75 .75])
@@ -1403,12 +1427,11 @@ end
         orient(2,'landscape')
         fprintf('     > Saving figure %s \n',strcat('PlanCampanha',Op.Cruise,'3D.png'));
         print(1, '-dpng',strcat('PlanCampanha',Op.Cruise,'3D.png'))
-
     end
 end
 
-
 end
+
 
 
 %% Funciones
@@ -1705,13 +1728,13 @@ hex = css(:,1:3);
 name = css(:,4);
 end
 
-% Logo
+%% Logo
 
 function haxesL=Logo(Type,Position)
 if nargin==0
-    Type=1;
+    Type=2;
     h=get(gca,'Position');
-    Position=[h(1)+h(3)-0.14  h(2)+0.14   0.16 0.16];
+    Position=[h(1)+h(3)-0.14  h(2)+0.04   0.16 0.16];
 elseif nargin==1
     switch Type
         case 1
