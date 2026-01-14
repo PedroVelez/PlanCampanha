@@ -93,7 +93,7 @@ Dep-m       - Depth (metres) at the station.
 Arriv. date - Arrival date to the station.
 Hour        - Hour of arrival to the station.
 WHours      - Hours working in the station.
-Day         - Cruise day (the cruise begins in day 1).
+Day         - Cruise day (the cruise begins in day 0).
 Naveg       - Navegation to the next station in nautical miles.
 ```
 
