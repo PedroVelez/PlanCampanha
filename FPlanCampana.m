@@ -558,7 +558,7 @@ end
 ii=1;
 TimeAtPoint(ii)=0;
 DateAfterPoint(ii)=Op.DepartingDate;
-DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate; %DiaCampanha begins in 0
 
 fprintf(fid,StrFmt10,PointName{ii},OperationID{10},lonPg(ii),lonPm(ii),latPg(ii),latPm(ii),'-----', ...
     datestr(DateAfterPoint(ii),'ddd dd mmm yyyy;HH:MM'),'-----',DiaCampana(ii),DistanciaPP(ii));
@@ -588,7 +588,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{1},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
@@ -605,7 +605,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -623,7 +623,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{11},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
@@ -640,7 +640,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -658,7 +658,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{12},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
@@ -675,7 +675,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -694,7 +694,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{13},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
@@ -711,7 +711,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -728,7 +728,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{14},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24, ...
@@ -745,7 +745,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -762,7 +762,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{15},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'),PointDepth(ii),...
@@ -779,7 +779,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -800,7 +800,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{16},...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'),...
@@ -817,7 +817,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -834,7 +834,7 @@ for ii=2:length(PointLon)
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
         FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf(StrFmtKml1,PointName{ii},OperationID{20}, ...
             datestr(DateAfterPoint(ii)-TimeAtPoint(ii)/24,'ddd dd mmm yyyy - HH:MM'), ...
@@ -851,7 +851,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -866,7 +866,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=0;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf('Waypoint navegation to next station (nm) %5.1f \nDate %s \n', ...
             DistanciaPP(ii),datestr(DateAfterPoint(ii),0));
@@ -881,7 +881,7 @@ for ii=2:length(PointLon)
                 TimeAtPoint(ii)=TimeAtPoint(ii)+Op.DailyAOperation;
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -898,7 +898,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=2*(2*PointDepth(ii)/3600)+Op.TLander; %El lander sube y baja a 30m/min,
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} ='DLander';
         KmlNombrePunto{ii} =PointName{ii};
@@ -913,7 +913,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -929,7 +929,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=2*(2*PointDepth(ii)/3600)+Op.TLander; %El lander sube y baja a 30m/min,
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} ='RLander';
         KmlNombrePunto{ii} =PointName{ii};
@@ -944,7 +944,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -960,7 +960,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=(2*PointDepth(ii)/3600)+Op.TMooring;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} ='Deploy Mooring';
         KmlNombrePunto{ii} =PointName{ii};
@@ -975,7 +975,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -991,7 +991,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=(2*PointDepth(ii)/3600)+Op.TMooring;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} ='Recover mooring';
         KmlNombrePunto{ii} =PointName{ii};
@@ -1006,7 +1006,7 @@ for ii=2:length(PointLon)
                 TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24; %En dias
                 DateAfterPoint(ii)=Op.DepartingDate+Op.Delay+TimeAfterPoint(ii);
                 FechaTrasStation(StationNumber)=DateAfterPoint(ii);
-                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+                DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
             end
         end
 
@@ -1021,7 +1021,7 @@ for ii=2:length(PointLon)
         TimeAtPoint(ii)=0;
         TimeAfterPoint(ii)=(sum(DistanciaPP(1:ii-1))/Op.VelocityVessel)/24+sum(TimeAtPoint(2:ii))/24;
         DateAfterPoint(ii)=Op.DepartingDate+TimeAfterPoint(ii)+Op.Delay;
-        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate+1;
+        DiaCampana(ii)=DateAfterPoint(ii)-TimeAtPoint(ii)/24-Op.DepartingDate;
 
         KmlDescripcionPunto{ii} =sprintf('%s, \n LLegada el fecha%s\n', ...
             OperationID{9},datestr(DateAfterPoint(ii),0));
@@ -1040,7 +1040,7 @@ TotalTimeStations=sum(TimeAtPoint);%Tiempo total en stations en horas
 
 %% Add Vessel track
 if Op.VesselTrack==1
-    m_plot(PointLon+Op.LonEConvMap,PointLat,'--','color',ctrack,'linewidth',1,'clip','on')
+    m_plot(PointLon+Op.LonEConvMap,PointLat,'-','color',ctrack,'linewidth',1.5,'clip','on')
 elseif Op.VesselTrack==2
     m_track(PointLon+Op.LonEConvMap,PointLat,DateAfterPoint, ...
         'ticks',24*60,'times',-1,'dates',-1,'orien','upright','datef',24)
@@ -1260,7 +1260,7 @@ if Op.Idioma==1
     fprintf(fid,'Fecha llegada- Fecha llegada a la estación.\n');
     fprintf(fid,'Hora         - Hora llegada a la estación.\n');
     fprintf(fid,'horasT       - Horas de trabajo en la estación.\n');
-    fprintf(fid,'Dia          - Dia de campaña (La campaña comienza el día 1).\n');
+    fprintf(fid,'Dia          - Dia de campaña (La campaña comienza el día 0).\n');
     fprintf(fid,'Naveg        - Navegación a la siguiente estación en millas náuticas.\n');
 elseif Op.Idioma==2
     fprintf(fid,'Station     - Name of the station.\n');
@@ -1273,7 +1273,7 @@ elseif Op.Idioma==2
     fprintf(fid,'Arriv. date - Arrival date to the station.\n');
     fprintf(fid,'Hour        - Hour of arrival to the station.\n');
     fprintf(fid,'WHours      - Hours working in the station.\n');
-    fprintf(fid,'Day         - Cruise day (the cruise begins in day 1).\n');
+    fprintf(fid,'Day         - Cruise day (the cruise begins in day 0).\n');
     fprintf(fid,'Naveg       - Navegation to the next station in nautical miles.\n');
 end
 fprintf(fid,'------------------------------------------------------------------------------------\n');
